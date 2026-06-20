@@ -1,0 +1,209 @@
+        <!-- Main Content Canvas -->
+        <main class="flex-1 p-10 max-w-[1200px] mx-auto w-full">
+            <div class="mb-10">
+                <h2 class="font-h1 text-h1 text-primary mb-2">Course Participants</h2>
+                <p class="text-on-surface-variant font-body-lg">Connect with your instructors and classmates for CS 301.
+                </p>
+            </div>
+            <!-- Search and Filter Bar -->
+            <div
+                class="bg-white border border-[#E0E0E0] rounded-xl p-4 mb-8 flex items-center gap-4 shadow-[0px_2px_8px_rgba(0,0,0,0.05)]">
+                <div class="flex-1 relative">
+                    <span
+                        class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+                    <input
+                        class="w-full pl-10 pr-4 py-2 bg-surface-container-lowest border border-outline-variant focus:border-primary-container outline-none transition-colors font-body-md rounded"
+                        placeholder="Search people by name or role..." type="text" />
+                </div>
+                <button
+                    class="px-6 py-2 bg-primary-container text-white font-label-sm rounded-lg hover:bg-primary transition-colors">
+                    Add Participant
+                </button>
+            </div>
+            <!-- Instructors Section -->
+            <section class="mb-12">
+                <div class="flex items-center gap-2 mb-6 border-b border-[#E0E0E0] pb-2">
+                    <span class="material-symbols-outlined text-primary-container"
+                        style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+                    <h3 class="font-h2 text-h2 text-primary">Instructors</h3>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Instructor 1 -->
+                    <div
+                        class="bg-white p-6 border border-[#E0E0E0] rounded-xl shadow-[0px_2px_8px_rgba(0,0,0,0.05)] hover:shadow-[0px_4px_12px_rgba(0,0,0,0.08)] transition-shadow flex items-start gap-6">
+                        <img alt="Dr. Sarah Jenkins"
+                            class="w-20 h-20 rounded-full object-cover border-2 border-primary-container p-0.5"
+                            data-alt="professional headshot of a middle-aged woman with glasses smiling warmly in a bright academic office setting"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuByLWgma63Tkjc5mZSBDx72XbOOuRgn8r6NqVkTAZ6ta4-Mw8YJ6xDePHwCBwd9UYFaie39BwTFwN-9l7lQQXyzeORMo9m7XfoYjiQK6JiTzdByUeIXe33fhMhXWzC5sWp1FakuMMqasZ2Z7_2y58Rt1zZUQkbXDDwmRZBOF2R36qcIf_Kt8MYQWknsVtIrABAKvxO5nEf5awCoP7vWdHUcvmimheP4BwEUeYL220hbbTEL7B4lgxdcPLBn1T5dEz2o8aeNf-ufiQ53" />
+                        <div class="flex-1">
+                            <h4 class="font-h3 text-h3 text-primary">Dr. Sarah Jenkins</h4>
+                            <p class="text-primary-container font-label-sm mb-3">Lead Instructor / Professor</p>
+                            <p class="text-on-surface-variant font-body-md leading-relaxed">Specializes in computational
+                                complexity and graph theory. Former researcher at DeepMind.</p>
+                            <div class="mt-4 flex gap-2">
+                                <button
+                                    class="p-2 bg-surface-container rounded-lg text-primary hover:bg-primary-container hover:text-white transition-colors">
+                                    <span class="material-symbols-outlined text-base">mail</span>
+                                </button>
+                                <button
+                                    class="p-2 bg-surface-container rounded-lg text-primary hover:bg-primary-container hover:text-white transition-colors">
+                                    <span class="material-symbols-outlined text-base">calendar_month</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Instructor 2 -->
+                    <div
+                        class="bg-white p-6 border border-[#E0E0E0] rounded-xl shadow-[0px_2px_8px_rgba(0,0,0,0.05)] hover:shadow-[0px_4px_12px_rgba(0,0,0,0.08)] transition-shadow flex items-start gap-6">
+                        <img alt="Marcus Wei"
+                            class="w-20 h-20 rounded-full object-cover border-2 border-primary-container p-0.5"
+                            data-alt="close-up of a young professional man with short dark hair in a clean white studio setting with soft lighting"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHvGoEyxMkM7GPr46ObUA8C8_RSRS0gWXsL6UFc4DmsiePZXFgCz4crkzFu853DGvbEkm_mupQe4jjYsDy8QcbiQwsHpuHZCrqmTqSkvG5U_-Q2fkkcauxqFvYRXHJUsBn00EJXNOeeNlH7P4hpfaIzQtjwuL-eDpvp-d-idapGWcCPZKNQRPygBk4Tjm3Agi6BSEjZ4jE8WLCtZVfxplQgzIqy_UGWw8nwDoBCJlinUOprOxTUgPBLh8CN_nJMC9T5lmXJcSYt_F0" />
+                        <div class="flex-1">
+                            <h4 class="font-h3 text-h3 text-primary">Marcus Wei</h4>
+                            <p class="text-primary-container font-label-sm mb-3">Teaching Assistant</p>
+                            <p class="text-on-surface-variant font-body-md leading-relaxed">PhD candidate focusing on
+                                randomized algorithms. Available for office hours on Tuesdays.</p>
+                            <div class="mt-4 flex gap-2">
+                                <button
+                                    class="p-2 bg-surface-container rounded-lg text-primary hover:bg-primary-container hover:text-white transition-colors">
+                                    <span class="material-symbols-outlined text-base">mail</span>
+                                </button>
+                                <button
+                                    class="p-2 bg-surface-container rounded-lg text-primary hover:bg-primary-container hover:text-white transition-colors">
+                                    <span class="material-symbols-outlined text-base">chat</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Students Section -->
+            <section>
+                <div class="flex items-center gap-2 mb-6 border-b border-[#E0E0E0] pb-2">
+                    <span class="material-symbols-outlined text-on-surface-variant">group</span>
+                    <h3 class="font-h2 text-h2 text-primary">Students</h3>
+                    <span class="ml-auto text-on-surface-variant font-label-sm">42 Enrolled</span>
+                </div>
+                <div class="space-y-4">
+                    <!-- Student Row 1 -->
+                    <div
+                        class="bg-white p-4 border border-[#E0E0E0] rounded-xl shadow-[0px_2px_8px_rgba(0,0,0,0.05)] flex items-center gap-6 hover:bg-surface-container-lowest transition-colors">
+                        <img alt="Alex Rivera" class="w-12 h-12 rounded-full object-cover"
+                            data-alt="portrait of a smiling young woman with curly hair outdoors with a blurred college campus background"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHGTGltAnAogfC-QKwBQaGCrMpKU4dGrmuExrOMas-d2NQPv_hV8sUiEyu_2SkZd5LJ-nY70Ln5zoQP4F_CdvOaGg7SFVIaB4Xu5xICKsMWSk08_5bQcnNx_2DX--eJbIJMOiDPvnJtdR86iRM-zgqKzdyDMJCqmLixX_rIvaXiocFRYntdpOx3guFffKTQiMPqC8wonf-wMP2lPg_o6eZJOtJU3ZM747QVGhDcVGThXNbXkcj8lanpHn-w4WR_tVuYY12VqjvW7Fm" />
+                        <div class="w-1/4">
+                            <h5 class="font-h3 text-sidebar-link text-on-surface">Alex Rivera</h5>
+                            <span class="text-on-surface-variant font-label-sm">Computer Science Major</span>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-on-surface-variant font-body-md italic line-clamp-1">"Interested in
+                                algorithmic trading and high-frequency systems."</p>
+                        </div>
+                        <div class="flex gap-4 items-center">
+                            <span
+                                class="px-3 py-1 bg-secondary-container text-on-secondary-container font-label-sm rounded-full">Junior</span>
+                            <button class="text-outline hover:text-primary transition-colors">
+                                <span class="material-symbols-outlined">more_vert</span>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Student Row 2 -->
+                    <div
+                        class="bg-white p-4 border border-[#E0E0E0] rounded-xl shadow-[0px_2px_8px_rgba(0,0,0,0.05)] flex items-center gap-6 hover:bg-surface-container-lowest transition-colors">
+                        <img alt="Liam O'Connell" class="w-12 h-12 rounded-full object-cover"
+                            data-alt="headshot of a young man with blonde hair and friendly expression in a modern library setting"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDI_CUT7tSxOLDJSERR2byJL1qmgbladYO4c7im5q5Zq8tfoKXilGAanD9T7Hizfc1O1W6S033aYL7mnZEZ-CIQu5MNXcdIuw9cKwqWq8poHs6inrOvS1iGteEDaX_-4TMvhgi3IEj9XeH8OJnV53oV2qvIO1CT1H1EMLOGV1sanXyS8FVfGlsb4fpYpamkCUskJmHc-umFZyLDiFmxBrpDe2rnVyQqEbPkjDSD9X1nVhrmbYeN-yV8DWrA6mKb4ht2WYjUfGMrKBoa" />
+                        <div class="w-1/4">
+                            <h5 class="font-h3 text-sidebar-link text-on-surface">Liam O'Connell</h5>
+                            <span class="text-on-surface-variant font-label-sm">Data Science Major</span>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-on-surface-variant font-body-md italic line-clamp-1">"Focusing on big data
+                                processing and distributed computing."</p>
+                        </div>
+                        <div class="flex gap-4 items-center">
+                            <span
+                                class="px-3 py-1 bg-secondary-container text-on-secondary-container font-label-sm rounded-full">Senior</span>
+                            <button class="text-outline hover:text-primary transition-colors">
+                                <span class="material-symbols-outlined">more_vert</span>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Student Row 3 -->
+                    <div
+                        class="bg-white p-4 border border-[#E0E0E0] rounded-xl shadow-[0px_2px_8px_rgba(0,0,0,0.05)] flex items-center gap-6 hover:bg-surface-container-lowest transition-colors">
+                        <img alt="Sana Patel" class="w-12 h-12 rounded-full object-cover"
+                            data-alt="portrait of a young South Asian woman in a blue sweater against a soft gray background"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3p6a_BNZdQIsgtDgSB96FBk9zjEWeQ2iPBs4zVnSOmCznsYk1GoGIdPH3WgwPIKQ3f5QNEz3RKCla9QwVU_WPWTnZ9m8NWQ_ehH1RAuKMWoVcIlS94rNkbHkvhEugV4rQt0ax8a_aESgaL0QYKaq7jD4OfKXDrVAJOmD3sO_oNqAdPk7GPoWrEsr9GE-3y4qh_nBbRf_QScE3iTz9y3-zD6h_o_DeWMCtTDBL1yPyTclA-SItwalDfmErUC-7CP3bxNucZdwp8uoQ" />
+                        <div class="w-1/4">
+                            <h5 class="font-h3 text-sidebar-link text-on-surface">Sana Patel</h5>
+                            <span class="text-on-surface-variant font-label-sm">Mathematics Major</span>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-on-surface-variant font-body-md italic line-clamp-1">"Bridging the gap
+                                between abstract math and efficient code."</p>
+                        </div>
+                        <div class="flex gap-4 items-center">
+                            <span
+                                class="px-3 py-1 bg-secondary-container text-on-secondary-container font-label-sm rounded-full">Sophomore</span>
+                            <button class="text-outline hover:text-primary transition-colors">
+                                <span class="material-symbols-outlined">more_vert</span>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Student Row 4 -->
+                    <div
+                        class="bg-white p-4 border border-[#E0E0E0] rounded-xl shadow-[0px_2px_8px_rgba(0,0,0,0.05)] flex items-center gap-6 hover:bg-surface-container-lowest transition-colors">
+                        <img alt="Jordan Smith" class="w-12 h-12 rounded-full object-cover"
+                            data-alt="close-up portrait of a non-binary individual with short dyed hair smiling in a modern office lounge"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoXWHObsvazrE_Xo2iDEdbl5e5Zo-VGe9JhMIFUzxqS_Noz_-FqMM4dsPF1IEDsebu1mp86VTCClYuntJZyIikg0fcQ65OAg29bhaphQF7-e6v9nRGdcQ7unzENNtaVMJ3KwEHB_Jxp4B1VFLYiEsKC5qFodjFoRjQgOSb88YtTF2wUs_IslmVFEkwEDMbTldDNy5BAF8kqqWFSyHXo5L5hKh1pg3cDQvNuq0QhIBWclHf_0yhg0ItknvnvqOU-x7UMTHljpIgfsRD" />
+                        <div class="w-1/4">
+                            <h5 class="font-h3 text-sidebar-link text-on-surface">Jordan Smith</h5>
+                            <span class="text-on-surface-variant font-label-sm">Software Engineering</span>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-on-surface-variant font-body-md italic line-clamp-1">"Building open-source
+                                tools for algorithmic visualization."</p>
+                        </div>
+                        <div class="flex gap-4 items-center">
+                            <span
+                                class="px-3 py-1 bg-secondary-container text-on-secondary-container font-label-sm rounded-full">Senior</span>
+                            <button class="text-outline hover:text-primary transition-colors">
+                                <span class="material-symbols-outlined">more_vert</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Pagination -->
+                <div class="mt-8 flex justify-center">
+                    <nav class="flex items-center gap-2">
+                        <button
+                            class="p-2 border border-[#E0E0E0] rounded hover:bg-surface-container transition-colors disabled:opacity-50">
+                            <span class="material-symbols-outlined">chevron_left</span>
+                        </button>
+                        <button class="w-10 h-10 bg-primary-container text-white font-label-sm rounded">1</button>
+                        <button
+                            class="w-10 h-10 border border-[#E0E0E0] text-on-surface font-label-sm rounded hover:bg-surface-container transition-colors">2</button>
+                        <button
+                            class="w-10 h-10 border border-[#E0E0E0] text-on-surface font-label-sm rounded hover:bg-surface-container transition-colors">3</button>
+                        <span class="mx-2 text-outline">...</span>
+                        <button
+                            class="w-10 h-10 border border-[#E0E0E0] text-on-surface font-label-sm rounded hover:bg-surface-container transition-colors">11</button>
+                        <button
+                            class="p-2 border border-[#E0E0E0] rounded hover:bg-surface-container transition-colors">
+                            <span class="material-symbols-outlined">chevron_right</span>
+                        </button>
+                    </nav>
+                </div>
+            </section>
+        </main>
+        <!-- Footer Info -->
+        <footer class="p-10 text-center border-t border-[#E0E0E0]">
+            <p class="text-on-surface-variant font-label-sm opacity-60">© 2024 LMS Global University Systems. All
+                participant data is private and encrypted.</p>
+        </footer>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,149 @@
+
+        <!-- Main Canvas -->
+        <main class="max-w-[1200px] mx-auto p-10">
+            <!-- Page Header Section -->
+            <div class="mb-10">
+                <div class="flex items-center gap-2 text-on-surface-variant mb-2">
+                    <span class="font-label-sm text-label-sm uppercase tracking-widest">Advanced Algorithms</span>
+                    <span class="text-outline-variant">•</span>
+                    <span class="font-label-sm text-label-sm uppercase tracking-widest">CS 301</span>
+                </div>
+                <h2 class="font-h1 text-h1 text-primary">Announcements</h2>
+            </div>
+            <!-- Announcements Feed (Bento/Card Mix) -->
+            <div class="grid grid-cols-1 gap-8">
+                <!-- Unread Announcement (Visual Emphasis) -->
+                <article
+                    class="bg-white border-l-4 border-[#003366] border-y border-r border-[#E0E0E0] p-8 shadow-[0px_2px_8px_rgba(0,0,0,0.05)] relative group hover:shadow-[0px_4px_12px_rgba(0,0,0,0.08)] transition-all">
+                    <div
+                        class="absolute -left-[4px] top-8 h-4 w-4 bg-[#003366] rounded-full -translate-x-1/2 flex items-center justify-center">
+                        <div class="w-1.5 h-1.5 bg-white rounded-full"></div>
+                    </div>
+                    <div class="flex justify-between items-start mb-6">
+                        <div>
+                            <span
+                                class="inline-block bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm px-3 py-1 rounded-full mb-3">New
+                                Announcement</span>
+                            <h3 class="font-h2 text-h2 text-on-surface mb-2">Final Project Specifications &amp; Rubric
+                                Released</h3>
+                            <div class="flex items-center gap-4 text-on-surface-variant font-label-sm text-label-sm">
+                                <div class="flex items-center gap-1.5">
+                                    <span class="material-symbols-outlined text-[18px]" data-icon="person">person</span>
+                                    Dr. Elena Vance
+                                </div>
+                                <div class="flex items-center gap-1.5">
+                                    <span class="material-symbols-outlined text-[18px]"
+                                        data-icon="calendar_month">calendar_month</span>
+                                    October 24, 2023
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl mb-6 leading-relaxed">
+                        The full specifications for the CS 301 Final Project are now available in the Modules section.
+                        Please pay close attention to the time complexity requirements for your custom implementations
+                        of B-Trees and Flow Networks.
+                    </div>
+                    <div class="flex gap-4">
+                        <button
+                            class="bg-[#003366] text-white px-6 py-2.5 font-label-sm text-label-sm rounded-lg hover:opacity-90 transition-opacity">Read
+                            Full Post</button>
+                        <button
+                            class="border border-[#003366] text-[#003366] px-6 py-2.5 font-label-sm text-label-sm rounded-lg hover:bg-[#F5F5F5] transition-colors">Download
+                            Attachment</button>
+                    </div>
+                </article>
+                <!-- Read Announcement 1 -->
+                <article
+                    class="bg-white border border-[#E0E0E0] p-8 shadow-[0px_2px_8px_rgba(0,0,0,0.05)] hover:shadow-[0px_4px_12px_rgba(0,0,0,0.08)] transition-all">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="font-h3 text-h3 text-on-surface mb-2">Revised Office Hours for Midterm Review
+                            </h3>
+                            <div class="flex items-center gap-4 text-on-surface-variant font-label-sm text-label-sm">
+                                <div class="flex items-center gap-1.5">
+                                    <span class="material-symbols-outlined text-[18px]" data-icon="person">person</span>
+                                    Dr. Elena Vance
+                                </div>
+                                <div class="flex items-center gap-1.5">
+                                    <span class="material-symbols-outlined text-[18px]"
+                                        data-icon="calendar_month">calendar_month</span>
+                                    October 18, 2023
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="font-body-md text-body-md text-on-surface-variant max-w-4xl mb-4">
+                        Due to the upcoming midterm exam, I will be holding additional office hours this Thursday from
+                        2:00 PM to 4:00 PM in Room 402. TAs will also be available in the main lab for any specific
+                        pseudocode debugging questions. Please come prepared with specific topics you'd like to cover.
+                    </div>
+                </article>
+                <!-- Read Announcement 2 with Image -->
+                <article
+                    class="bg-white border border-[#E0E0E0] shadow-[0px_2px_8px_rgba(0,0,0,0.05)] grid grid-cols-1 md:grid-cols-12 overflow-hidden hover:shadow-[0px_4px_12px_rgba(0,0,0,0.08)] transition-all">
+                    <div class="md:col-span-4 h-64 md:h-auto overflow-hidden">
+                        <img class="w-full h-full object-cover"
+                            data-alt="Modern dark room with multiple computer screens displaying complex algorithm visualizations and code in a high-tech academic lab setting"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkHque2SUpPLdTFYQMmLJO9XvEMXw3UHynw2x1o03agF5o8skL-N4cywSWvutBZkmrxAo497fQ9nD6aoKNVLurfXYfaRJHTW1rQgSQxgWcdrOgwSSAyBZLfNO3ape9ztm9fSwma5EJy2I1EtXuAxH6SjoomAqC_6sdtdAUD9Uhhw2MLAkoqUyZb9X8EWUfZoHqpfvfy5f9QxUK4fndFAZ2Eg9pJJwWbXClFEdyq2-1Hq19xyvnmSS7OXBZ4R2DNbvXnVyjzlw2ypkF" />
+                    </div>
+                    <div class="md:col-span-8 p-8">
+                        <h3 class="font-h3 text-h3 text-on-surface mb-2">Algorithm Visualization Guest Lecture</h3>
+                        <div class="flex items-center gap-4 text-on-surface-variant font-label-sm text-label-sm mb-4">
+                            <div class="flex items-center gap-1.5">
+                                <span class="material-symbols-outlined text-[18px]" data-icon="person">person</span>
+                                Dr. Elena Vance
+                            </div>
+                            <div class="flex items-center gap-1.5">
+                                <span class="material-symbols-outlined text-[18px]"
+                                    data-icon="calendar_month">calendar_month</span>
+                                October 10, 2023
+                            </div>
+                        </div>
+                        <p class="font-body-md text-body-md text-on-surface-variant mb-6">
+                            Next Monday, we are hosting Dr. Julian Thorne from the Visualization Lab. He will
+                            demonstrate real-time rendering of graph traversal algorithms on large datasets. This is a
+                            mandatory session as it directly relates to the upcoming Lab 4.
+                        </p>
+                        <button
+                            class="bg-[#F5F5F5] text-on-surface px-4 py-2 font-label-sm text-label-sm rounded-lg hover:bg-surface-container transition-colors flex items-center gap-2">
+                            <span class="material-symbols-outlined text-[18px]" data-icon="link">link</span>
+                            Zoom Link for Recording
+                        </button>
+                    </div>
+                </article>
+                <!-- Read Announcement 3 -->
+                <article
+                    class="bg-white border border-[#E0E0E0] p-8 shadow-[0px_2px_8px_rgba(0,0,0,0.05)] hover:shadow-[0px_4px_12px_rgba(0,0,0,0.08)] transition-all">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="font-h3 text-h3 text-on-surface mb-2">Welcome to CS 301: Advanced Algorithms</h3>
+                            <div class="flex items-center gap-4 text-on-surface-variant font-label-sm text-label-sm">
+                                <div class="flex items-center gap-1.5">
+                                    <span class="material-symbols-outlined text-[18px]" data-icon="person">person</span>
+                                    Dr. Elena Vance
+                                </div>
+                                <div class="flex items-center gap-1.5">
+                                    <span class="material-symbols-outlined text-[18px]"
+                                        data-icon="calendar_month">calendar_month</span>
+                                    September 01, 2023
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="font-body-md text-body-md text-on-surface-variant max-w-4xl">
+                        Welcome students! I am excited to begin this journey through advanced data structures and
+                        algorithm analysis with you. Please download the syllabus from the home page and complete the
+                        "Background Knowledge Quiz" by Friday. We will be using Python for all implementations.
+                    </div>
+                </article>
+            </div>
+            <!-- Load More Pagination -->
+            <div class="mt-12 flex justify-center">
+                <button
+                    class="flex items-center gap-2 text-on-surface-variant font-label-sm text-label-sm hover:text-primary transition-colors py-4">
+                    <span class="material-symbols-outlined" data-icon="history">history</span>
+                    Load Previous Announcements
+                </button>
+            </div>
+        </main>

@@ -1,0 +1,419 @@
+<!-- People - CS 301 -->
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#c6c6c7",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "surface-container": "#eeeeee",
+                        "tertiary-fixed": "#ffdbca",
+                        "surface": "#f9f9f9",
+                        "on-tertiary-container": "#d8885c",
+                        "tertiary": "#381300",
+                        "surface-container-high": "#e8e8e8",
+                        "on-secondary": "#ffffff",
+                        "surface-container-low": "#f4f3f3",
+                        "surface-container-highest": "#e2e2e2",
+                        "on-secondary-container": "#5f6161",
+                        "on-background": "#1a1c1c",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed-variant": "#723610",
+                        "on-surface-variant": "#43474f",
+                        "surface-tint": "#3a5f94",
+                        "surface-dim": "#dadada",
+                        "primary-fixed": "#d5e3ff",
+                        "tertiary-fixed-dim": "#ffb690",
+                        "on-secondary-fixed-variant": "#454747",
+                        "surface-container-lowest": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed": "#001b3c",
+                        "secondary-container": "#dcdddd",
+                        "inverse-on-surface": "#f1f1f1",
+                        "background": "#f9f9f9",
+                        "primary-container": "#003366",
+                        "on-primary-container": "#799dd6",
+                        "surface-variant": "#e2e2e2",
+                        "surface-bright": "#f9f9f9",
+                        "primary": "#001e40",
+                        "secondary": "#5d5f5f",
+                        "outline": "#737780",
+                        "secondary-fixed": "#e2e2e2",
+                        "outline-variant": "#c3c6d1",
+                        "tertiary-container": "#592300",
+                        "on-tertiary": "#ffffff",
+                        "inverse-primary": "#a7c8ff",
+                        "on-surface": "#1a1c1c",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed": "#341100",
+                        "on-error-container": "#93000a",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed-variant": "#1f477b",
+                        "primary-fixed-dim": "#a7c8ff",
+                        "inverse-surface": "#2f3131"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "stack-sm": "8px",
+                        "stack-lg": "32px",
+                        "stack-md": "16px",
+                        "margin-page": "40px",
+                        "sidebar-width": "240px",
+                        "container-max-width": "1200px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "sidebar-link": ["Inter"],
+                        "h2": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "h3": ["Inter"],
+                        "h1": ["Inter"]
+                    },
+                    "fontSize": {
+                        "sidebar-link": ["15px", { "lineHeight": "1.0", "fontWeight": "500" }],
+                        "h2": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-sm": ["14px", { "lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "h3": ["20px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "h1": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        body {
+            background-color: #f9f9f9;
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body class="font-body-md text-on-background">
+    <!-- NavigationDrawer (Shared Component) -->
+    <aside
+        class="fixed left-0 top-0 h-screen w-[240px] z-40 bg-[#003366] dark:bg-slate-950 flex flex-col h-full py-6 border-r border-blue-800 dark:border-slate-800 hidden md:flex">
+        <!-- Brand / Header -->
+        <div class="px-6 mb-10 flex flex-col gap-1">
+            <span class="text-white text-xl font-bold tracking-tight">EduCore LMS</span>
+            <div class="flex items-center gap-3 mt-6">
+                <img alt="Professor Smith" class="w-10 h-10 rounded-[100%]"
+                    data-alt="Professional portrait of a middle-aged academic man with glasses in a clean office setting, soft natural lighting"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAg4R0k_dl-n2M6VY9LI61JRwS7NqDQZJpwKO57yIxwlIXW30CBAUf9zNFVylE3E2UnTx-15hfGrcoXO-c0HKbg6C9pwrp1JQhcVNEpo0UKvZ72AG4-SdKUYSty4R1POy2pRRFVKnVmdgfY5nIuwF4s_6HKmf9HRX6MDq9K4gZIk8IdT_4GI5yDlqhgTUzqUAUeLaZBZsPgQR4fWtcIbn0mzzSwuScRdApPwBZWKG837GDCCGyTd3VIImdSpclF7ROZu9vjylO9APvB" />
+                <div class="flex flex-col">
+                    <span class="text-white font-sidebar-link text-sidebar-link">Professor Smith</span>
+                    <span class="text-blue-200/60 text-xs font-medium">Lead Instructor</span>
+                </div>
+            </div>
+        </div>
+        <!-- Navigation Links -->
+        <nav class="flex-1">
+            <ul class="space-y-1">
+                <!-- Dashboard (Active) -->
+                <li>
+                    <a class="flex items-center gap-3 px-4 py-3 text-blue-100/70 hover:text-white hover:bg-white/5 font-inter text-sm font-medium transition-all duration-200"
+                        href="dashboard.html">
+                        <span class="material-symbols-outlined" data-icon="dashboard"
+                            style="font-variation-settings: 'FILL' 1;">dashboard</span>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <!-- My Courses -->
+                <li>
+                    <a class="flex items-center gap-3 px-4 py-3 bg-white/10 text-white border-l-4 border-white font-inter text-sm font-medium transition-all duration-200"
+                        href="courseHome.html">
+                        <span class="material-symbols-outlined" data-icon="school">school</span>
+                        <span>My Courses</span>
+                    </a>
+                </li>
+                <!-- Calendar -->
+                <li>
+                    <a class="flex items-center gap-3 px-4 py-3 text-blue-100/70 hover:text-white hover:bg-white/5 font-inter text-sm font-medium transition-all duration-200"
+                        href="#">
+                        <span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+                        <span>Calendar</span>
+                    </a>
+                </li>
+                <!-- Settings -->
+                <li>
+                    <a class="flex items-center gap-3 px-4 py-3 text-blue-100/70 hover:text-white hover:bg-white/5 font-inter text-sm font-medium transition-all duration-200"
+                        href="#">
+                        <span class="material-symbols-outlined" data-icon="settings">settings</span>
+                        <span>Settings</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="flex items-center gap-3 px-4 py-3 text-blue-100/70 hover:text-white hover:bg-white/5 font-inter text-sm font-medium transition-all duration-200"
+                        href="#">
+                        <span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+                        <span>Notifications</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+    <!-- Content Wrapper -->
+    <div class="ml-[240px] flex flex-col min-h-screen">
+        <!-- TopAppBar (Shared Component) -->
+        <header
+            class="sticky top-0 z-40 bg-white border-b border-[#E0E0E0] flex items-center justify-between px-10 h-16 w-full">
+            <div class="flex items-center gap-4">
+                <span class="material-symbols-outlined text-[#003366]" data-icon="menu_book">menu_book</span>
+                <h1 class="text-lg font-black text-[#003366] font-h3">Course Interface</h1>
+            </div>
+            <nav class="flex gap-8">
+                <a class="text-slate-500 pb-2 hover:text-[#003366] transition-colors font-sidebar-link text-sidebar-link"
+                    href="courseHome.html">Home</a>
+                <a class="text-slate-500 pb-2 hover:text-[#003366] transition-colors font-sidebar-link text-sidebar-link"
+                    href="courseAnnouncements.html">Announcements</a>
+                <a class="text-slate-500 pb-2 hover:text-[#003366] transition-colors font-sidebar-link text-sidebar-link"
+                    href="courseModules.html">Modules</a>
+                <a class="text-slate-500 pb-2 hover:text-[#003366] transition-colors font-sidebar-link text-sidebar-link"
+                    href="courseAssignments.html">Assignments</a>
+                <a class="text-slate-500 pb-2 hover:text-[#003366] transition-colors font-sidebar-link text-sidebar-link"
+                    href="courseGrades.html">Grades</a>
+                <a class="text-[#003366] border-b-2 border-[#003366] pb-2 font-sidebar-link text-sidebar-link"
+                    href="coursePeople.html">People</a>
+        </header>
+        <!-- Main Content Canvas -->
+        <main class="flex-1 p-10 max-w-[1200px] mx-auto w-full">
+            <div class="mb-10">
+                <h2 class="font-h1 text-h1 text-primary mb-2">Course Participants</h2>
+                <p class="text-on-surface-variant font-body-lg">Connect with your instructors and classmates for CS 301.
+                </p>
+            </div>
+            <!-- Search and Filter Bar -->
+            <div
+                class="bg-white border border-[#E0E0E0] rounded-xl p-4 mb-8 flex items-center gap-4 shadow-[0px_2px_8px_rgba(0,0,0,0.05)]">
+                <div class="flex-1 relative">
+                    <span
+                        class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+                    <input
+                        class="w-full pl-10 pr-4 py-2 bg-surface-container-lowest border border-outline-variant focus:border-primary-container outline-none transition-colors font-body-md rounded"
+                        placeholder="Search people by name or role..." type="text" />
+                </div>
+                <button
+                    class="px-6 py-2 bg-primary-container text-white font-label-sm rounded-lg hover:bg-primary transition-colors">
+                    Add Participant
+                </button>
+            </div>
+            <!-- Instructors Section -->
+            <section class="mb-12">
+                <div class="flex items-center gap-2 mb-6 border-b border-[#E0E0E0] pb-2">
+                    <span class="material-symbols-outlined text-primary-container"
+                        style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+                    <h3 class="font-h2 text-h2 text-primary">Instructors</h3>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Instructor 1 -->
+                    <div
+                        class="bg-white p-6 border border-[#E0E0E0] rounded-xl shadow-[0px_2px_8px_rgba(0,0,0,0.05)] hover:shadow-[0px_4px_12px_rgba(0,0,0,0.08)] transition-shadow flex items-start gap-6">
+                        <img alt="Dr. Sarah Jenkins"
+                            class="w-20 h-20 rounded-full object-cover border-2 border-primary-container p-0.5"
+                            data-alt="professional headshot of a middle-aged woman with glasses smiling warmly in a bright academic office setting"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuByLWgma63Tkjc5mZSBDx72XbOOuRgn8r6NqVkTAZ6ta4-Mw8YJ6xDePHwCBwd9UYFaie39BwTFwN-9l7lQQXyzeORMo9m7XfoYjiQK6JiTzdByUeIXe33fhMhXWzC5sWp1FakuMMqasZ2Z7_2y58Rt1zZUQkbXDDwmRZBOF2R36qcIf_Kt8MYQWknsVtIrABAKvxO5nEf5awCoP7vWdHUcvmimheP4BwEUeYL220hbbTEL7B4lgxdcPLBn1T5dEz2o8aeNf-ufiQ53" />
+                        <div class="flex-1">
+                            <h4 class="font-h3 text-h3 text-primary">Dr. Sarah Jenkins</h4>
+                            <p class="text-primary-container font-label-sm mb-3">Lead Instructor / Professor</p>
+                            <p class="text-on-surface-variant font-body-md leading-relaxed">Specializes in computational
+                                complexity and graph theory. Former researcher at DeepMind.</p>
+                            <div class="mt-4 flex gap-2">
+                                <button
+                                    class="p-2 bg-surface-container rounded-lg text-primary hover:bg-primary-container hover:text-white transition-colors">
+                                    <span class="material-symbols-outlined text-base">mail</span>
+                                </button>
+                                <button
+                                    class="p-2 bg-surface-container rounded-lg text-primary hover:bg-primary-container hover:text-white transition-colors">
+                                    <span class="material-symbols-outlined text-base">calendar_month</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Instructor 2 -->
+                    <div
+                        class="bg-white p-6 border border-[#E0E0E0] rounded-xl shadow-[0px_2px_8px_rgba(0,0,0,0.05)] hover:shadow-[0px_4px_12px_rgba(0,0,0,0.08)] transition-shadow flex items-start gap-6">
+                        <img alt="Marcus Wei"
+                            class="w-20 h-20 rounded-full object-cover border-2 border-primary-container p-0.5"
+                            data-alt="close-up of a young professional man with short dark hair in a clean white studio setting with soft lighting"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHvGoEyxMkM7GPr46ObUA8C8_RSRS0gWXsL6UFc4DmsiePZXFgCz4crkzFu853DGvbEkm_mupQe4jjYsDy8QcbiQwsHpuHZCrqmTqSkvG5U_-Q2fkkcauxqFvYRXHJUsBn00EJXNOeeNlH7P4hpfaIzQtjwuL-eDpvp-d-idapGWcCPZKNQRPygBk4Tjm3Agi6BSEjZ4jE8WLCtZVfxplQgzIqy_UGWw8nwDoBCJlinUOprOxTUgPBLh8CN_nJMC9T5lmXJcSYt_F0" />
+                        <div class="flex-1">
+                            <h4 class="font-h3 text-h3 text-primary">Marcus Wei</h4>
+                            <p class="text-primary-container font-label-sm mb-3">Teaching Assistant</p>
+                            <p class="text-on-surface-variant font-body-md leading-relaxed">PhD candidate focusing on
+                                randomized algorithms. Available for office hours on Tuesdays.</p>
+                            <div class="mt-4 flex gap-2">
+                                <button
+                                    class="p-2 bg-surface-container rounded-lg text-primary hover:bg-primary-container hover:text-white transition-colors">
+                                    <span class="material-symbols-outlined text-base">mail</span>
+                                </button>
+                                <button
+                                    class="p-2 bg-surface-container rounded-lg text-primary hover:bg-primary-container hover:text-white transition-colors">
+                                    <span class="material-symbols-outlined text-base">chat</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Students Section -->
+            <section>
+                <div class="flex items-center gap-2 mb-6 border-b border-[#E0E0E0] pb-2">
+                    <span class="material-symbols-outlined text-on-surface-variant">group</span>
+                    <h3 class="font-h2 text-h2 text-primary">Students</h3>
+                    <span class="ml-auto text-on-surface-variant font-label-sm">42 Enrolled</span>
+                </div>
+                <div class="space-y-4">
+                    <!-- Student Row 1 -->
+                    <div
+                        class="bg-white p-4 border border-[#E0E0E0] rounded-xl shadow-[0px_2px_8px_rgba(0,0,0,0.05)] flex items-center gap-6 hover:bg-surface-container-lowest transition-colors">
+                        <img alt="Alex Rivera" class="w-12 h-12 rounded-full object-cover"
+                            data-alt="portrait of a smiling young woman with curly hair outdoors with a blurred college campus background"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHGTGltAnAogfC-QKwBQaGCrMpKU4dGrmuExrOMas-d2NQPv_hV8sUiEyu_2SkZd5LJ-nY70Ln5zoQP4F_CdvOaGg7SFVIaB4Xu5xICKsMWSk08_5bQcnNx_2DX--eJbIJMOiDPvnJtdR86iRM-zgqKzdyDMJCqmLixX_rIvaXiocFRYntdpOx3guFffKTQiMPqC8wonf-wMP2lPg_o6eZJOtJU3ZM747QVGhDcVGThXNbXkcj8lanpHn-w4WR_tVuYY12VqjvW7Fm" />
+                        <div class="w-1/4">
+                            <h5 class="font-h3 text-sidebar-link text-on-surface">Alex Rivera</h5>
+                            <span class="text-on-surface-variant font-label-sm">Computer Science Major</span>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-on-surface-variant font-body-md italic line-clamp-1">"Interested in
+                                algorithmic trading and high-frequency systems."</p>
+                        </div>
+                        <div class="flex gap-4 items-center">
+                            <span
+                                class="px-3 py-1 bg-secondary-container text-on-secondary-container font-label-sm rounded-full">Junior</span>
+                            <button class="text-outline hover:text-primary transition-colors">
+                                <span class="material-symbols-outlined">more_vert</span>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Student Row 2 -->
+                    <div
+                        class="bg-white p-4 border border-[#E0E0E0] rounded-xl shadow-[0px_2px_8px_rgba(0,0,0,0.05)] flex items-center gap-6 hover:bg-surface-container-lowest transition-colors">
+                        <img alt="Liam O'Connell" class="w-12 h-12 rounded-full object-cover"
+                            data-alt="headshot of a young man with blonde hair and friendly expression in a modern library setting"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDI_CUT7tSxOLDJSERR2byJL1qmgbladYO4c7im5q5Zq8tfoKXilGAanD9T7Hizfc1O1W6S033aYL7mnZEZ-CIQu5MNXcdIuw9cKwqWq8poHs6inrOvS1iGteEDaX_-4TMvhgi3IEj9XeH8OJnV53oV2qvIO1CT1H1EMLOGV1sanXyS8FVfGlsb4fpYpamkCUskJmHc-umFZyLDiFmxBrpDe2rnVyQqEbPkjDSD9X1nVhrmbYeN-yV8DWrA6mKb4ht2WYjUfGMrKBoa" />
+                        <div class="w-1/4">
+                            <h5 class="font-h3 text-sidebar-link text-on-surface">Liam O'Connell</h5>
+                            <span class="text-on-surface-variant font-label-sm">Data Science Major</span>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-on-surface-variant font-body-md italic line-clamp-1">"Focusing on big data
+                                processing and distributed computing."</p>
+                        </div>
+                        <div class="flex gap-4 items-center">
+                            <span
+                                class="px-3 py-1 bg-secondary-container text-on-secondary-container font-label-sm rounded-full">Senior</span>
+                            <button class="text-outline hover:text-primary transition-colors">
+                                <span class="material-symbols-outlined">more_vert</span>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Student Row 3 -->
+                    <div
+                        class="bg-white p-4 border border-[#E0E0E0] rounded-xl shadow-[0px_2px_8px_rgba(0,0,0,0.05)] flex items-center gap-6 hover:bg-surface-container-lowest transition-colors">
+                        <img alt="Sana Patel" class="w-12 h-12 rounded-full object-cover"
+                            data-alt="portrait of a young South Asian woman in a blue sweater against a soft gray background"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3p6a_BNZdQIsgtDgSB96FBk9zjEWeQ2iPBs4zVnSOmCznsYk1GoGIdPH3WgwPIKQ3f5QNEz3RKCla9QwVU_WPWTnZ9m8NWQ_ehH1RAuKMWoVcIlS94rNkbHkvhEugV4rQt0ax8a_aESgaL0QYKaq7jD4OfKXDrVAJOmD3sO_oNqAdPk7GPoWrEsr9GE-3y4qh_nBbRf_QScE3iTz9y3-zD6h_o_DeWMCtTDBL1yPyTclA-SItwalDfmErUC-7CP3bxNucZdwp8uoQ" />
+                        <div class="w-1/4">
+                            <h5 class="font-h3 text-sidebar-link text-on-surface">Sana Patel</h5>
+                            <span class="text-on-surface-variant font-label-sm">Mathematics Major</span>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-on-surface-variant font-body-md italic line-clamp-1">"Bridging the gap
+                                between abstract math and efficient code."</p>
+                        </div>
+                        <div class="flex gap-4 items-center">
+                            <span
+                                class="px-3 py-1 bg-secondary-container text-on-secondary-container font-label-sm rounded-full">Sophomore</span>
+                            <button class="text-outline hover:text-primary transition-colors">
+                                <span class="material-symbols-outlined">more_vert</span>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Student Row 4 -->
+                    <div
+                        class="bg-white p-4 border border-[#E0E0E0] rounded-xl shadow-[0px_2px_8px_rgba(0,0,0,0.05)] flex items-center gap-6 hover:bg-surface-container-lowest transition-colors">
+                        <img alt="Jordan Smith" class="w-12 h-12 rounded-full object-cover"
+                            data-alt="close-up portrait of a non-binary individual with short dyed hair smiling in a modern office lounge"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoXWHObsvazrE_Xo2iDEdbl5e5Zo-VGe9JhMIFUzxqS_Noz_-FqMM4dsPF1IEDsebu1mp86VTCClYuntJZyIikg0fcQ65OAg29bhaphQF7-e6v9nRGdcQ7unzENNtaVMJ3KwEHB_Jxp4B1VFLYiEsKC5qFodjFoRjQgOSb88YtTF2wUs_IslmVFEkwEDMbTldDNy5BAF8kqqWFSyHXo5L5hKh1pg3cDQvNuq0QhIBWclHf_0yhg0ItknvnvqOU-x7UMTHljpIgfsRD" />
+                        <div class="w-1/4">
+                            <h5 class="font-h3 text-sidebar-link text-on-surface">Jordan Smith</h5>
+                            <span class="text-on-surface-variant font-label-sm">Software Engineering</span>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-on-surface-variant font-body-md italic line-clamp-1">"Building open-source
+                                tools for algorithmic visualization."</p>
+                        </div>
+                        <div class="flex gap-4 items-center">
+                            <span
+                                class="px-3 py-1 bg-secondary-container text-on-secondary-container font-label-sm rounded-full">Senior</span>
+                            <button class="text-outline hover:text-primary transition-colors">
+                                <span class="material-symbols-outlined">more_vert</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Pagination -->
+                <div class="mt-8 flex justify-center">
+                    <nav class="flex items-center gap-2">
+                        <button
+                            class="p-2 border border-[#E0E0E0] rounded hover:bg-surface-container transition-colors disabled:opacity-50">
+                            <span class="material-symbols-outlined">chevron_left</span>
+                        </button>
+                        <button class="w-10 h-10 bg-primary-container text-white font-label-sm rounded">1</button>
+                        <button
+                            class="w-10 h-10 border border-[#E0E0E0] text-on-surface font-label-sm rounded hover:bg-surface-container transition-colors">2</button>
+                        <button
+                            class="w-10 h-10 border border-[#E0E0E0] text-on-surface font-label-sm rounded hover:bg-surface-container transition-colors">3</button>
+                        <span class="mx-2 text-outline">...</span>
+                        <button
+                            class="w-10 h-10 border border-[#E0E0E0] text-on-surface font-label-sm rounded hover:bg-surface-container transition-colors">11</button>
+                        <button
+                            class="p-2 border border-[#E0E0E0] rounded hover:bg-surface-container transition-colors">
+                            <span class="material-symbols-outlined">chevron_right</span>
+                        </button>
+                    </nav>
+                </div>
+            </section>
+        </main>
+        <!-- Footer Info -->
+        <footer class="p-10 text-center border-t border-[#E0E0E0]">
+            <p class="text-on-surface-variant font-label-sm opacity-60">© 2024 LMS Global University Systems. All
+                participant data is private and encrypted.</p>
+        </footer>
+    </div>
+</body>
+
+</html>

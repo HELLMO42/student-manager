@@ -1,0 +1,452 @@
+<!-- Grades - CS 301 -->
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#c6c6c7",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "surface-container": "#eeeeee",
+                        "tertiary-fixed": "#ffdbca",
+                        "surface": "#f9f9f9",
+                        "on-tertiary-container": "#d8885c",
+                        "tertiary": "#381300",
+                        "surface-container-high": "#e8e8e8",
+                        "on-secondary": "#ffffff",
+                        "surface-container-low": "#f4f3f3",
+                        "surface-container-highest": "#e2e2e2",
+                        "on-secondary-container": "#5f6161",
+                        "on-background": "#1a1c1c",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed-variant": "#723610",
+                        "on-surface-variant": "#43474f",
+                        "surface-tint": "#3a5f94",
+                        "surface-dim": "#dadada",
+                        "primary-fixed": "#d5e3ff",
+                        "tertiary-fixed-dim": "#ffb690",
+                        "on-secondary-fixed-variant": "#454747",
+                        "surface-container-lowest": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed": "#001b3c",
+                        "secondary-container": "#dcdddd",
+                        "inverse-on-surface": "#f1f1f1",
+                        "background": "#f9f9f9",
+                        "primary-container": "#003366",
+                        "on-primary-container": "#799dd6",
+                        "surface-variant": "#e2e2e2",
+                        "surface-bright": "#f9f9f9",
+                        "primary": "#001e40",
+                        "secondary": "#5d5f5f",
+                        "outline": "#737780",
+                        "secondary-fixed": "#e2e2e2",
+                        "outline-variant": "#c3c6d1",
+                        "tertiary-container": "#592300",
+                        "on-tertiary": "#ffffff",
+                        "inverse-primary": "#a7c8ff",
+                        "on-surface": "#1a1c1c",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed": "#341100",
+                        "on-error-container": "#93000a",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed-variant": "#1f477b",
+                        "primary-fixed-dim": "#a7c8ff",
+                        "inverse-surface": "#2f3131"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "stack-sm": "8px",
+                        "stack-lg": "32px",
+                        "stack-md": "16px",
+                        "margin-page": "40px",
+                        "sidebar-width": "240px",
+                        "container-max-width": "1200px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "sidebar-link": ["Inter"],
+                        "h2": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "h3": ["Inter"],
+                        "h1": ["Inter"]
+                    },
+                    "fontSize": {
+                        "sidebar-link": ["15px", { "lineHeight": "1.0", "fontWeight": "500" }],
+                        "h2": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-sm": ["14px", { "lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "h3": ["20px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "h1": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        body {
+            background-color: #f9f9f9;
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body class="font-body-md text-on-background">
+    <!-- NavigationDrawer (JSON Component) -->
+    <aside
+        class="fixed left-0 top-0 h-screen w-[240px] z-40 bg-[#003366] dark:bg-slate-950 flex flex-col h-full py-6 border-r border-blue-800 dark:border-slate-800 hidden md:flex">
+        <!-- Brand / Header -->
+        <div class="px-6 mb-10 flex flex-col gap-1">
+            <span class="text-white text-xl font-bold tracking-tight">EduCore LMS</span>
+            <div class="flex items-center gap-3 mt-6">
+                <img alt="Professor Smith" class="w-10 h-10 rounded-[100%]"
+                    data-alt="Professional portrait of a middle-aged academic man with glasses in a clean office setting, soft natural lighting"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAg4R0k_dl-n2M6VY9LI61JRwS7NqDQZJpwKO57yIxwlIXW30CBAUf9zNFVylE3E2UnTx-15hfGrcoXO-c0HKbg6C9pwrp1JQhcVNEpo0UKvZ72AG4-SdKUYSty4R1POy2pRRFVKnVmdgfY5nIuwF4s_6HKmf9HRX6MDq9K4gZIk8IdT_4GI5yDlqhgTUzqUAUeLaZBZsPgQR4fWtcIbn0mzzSwuScRdApPwBZWKG837GDCCGyTd3VIImdSpclF7ROZu9vjylO9APvB" />
+                <div class="flex flex-col">
+                    <span class="text-white font-sidebar-link text-sidebar-link">Professor Smith</span>
+                    <span class="text-blue-200/60 text-xs font-medium">Lead Instructor</span>
+                </div>
+            </div>
+        </div>
+        <!-- Navigation Links -->
+        <nav class="flex-1">
+            <ul class="space-y-1">
+                <!-- Dashboard (Active) -->
+                <li>
+                    <a class="flex items-center gap-3 px-4 py-3 text-blue-100/70 hover:text-white hover:bg-white/5 font-inter text-sm font-medium transition-all duration-200"
+                        href="dashboard.html">
+                        <span class="material-symbols-outlined" data-icon="dashboard"
+                            style="font-variation-settings: 'FILL' 1;">dashboard</span>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <!-- My Courses -->
+                <li>
+                    <a class="flex items-center gap-3 px-4 py-3 bg-white/10 text-white border-l-4 border-white font-inter text-sm font-medium transition-all duration-200"
+                        href="courseHome.html">
+                        <span class="material-symbols-outlined" data-icon="school">school</span>
+                        <span>My Courses</span>
+                    </a>
+                </li>
+                <!-- Calendar -->
+                <li>
+                    <a class="flex items-center gap-3 px-4 py-3 text-blue-100/70 hover:text-white hover:bg-white/5 font-inter text-sm font-medium transition-all duration-200"
+                        href="#">
+                        <span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+                        <span>Calendar</span>
+                    </a>
+                </li>
+                <!-- Settings -->
+                <li>
+                    <a class="flex items-center gap-3 px-4 py-3 text-blue-100/70 hover:text-white hover:bg-white/5 font-inter text-sm font-medium transition-all duration-200"
+                        href="#">
+                        <span class="material-symbols-outlined" data-icon="settings">settings</span>
+                        <span>Settings</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="flex items-center gap-3 px-4 py-3 text-blue-100/70 hover:text-white hover:bg-white/5 font-inter text-sm font-medium transition-all duration-200"
+                        href="#">
+                        <span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+                        <span>Notifications</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+    <div class="ml-[240px] flex flex-col min-h-screen">
+        <!-- TopAppBar (JSON Component) -->
+        <header
+            class="sticky top-0 z-40 bg-white border-b border-[#E0E0E0] flex items-center justify-between px-10 h-16 w-full">
+            <div class="flex items-center gap-4">
+                <span class="material-symbols-outlined text-[#003366]" data-icon="menu_book">menu_book</span>
+                <h1 class="text-lg font-black text-[#003366] font-h3">Course Interface</h1>
+            </div>
+            <nav class="flex gap-8">
+                <a class="text-slate-500 pb-2 hover:text-[#003366] transition-colors font-sidebar-link text-sidebar-link"
+                    href="courseHome.html">Home</a>
+                <a class="text-slate-500 pb-2 hover:text-[#003366] transition-colors font-sidebar-link text-sidebar-link"
+                    href="courseAnnouncements.html">Announcements</a>
+                <a class="text-slate-500 pb-2 hover:text-[#003366] transition-colors font-sidebar-link text-sidebar-link"
+                    href="courseModules.html">Modules</a>
+                <a class="text-slate-500 pb-2 hover:text-[#003366] transition-colors font-sidebar-link text-sidebar-link"
+                    href="courseAssignments.html">Assignments</a>
+                <a class="text-[#003366] border-b-2 border-[#003366] pb-2 font-sidebar-link text-sidebar-link"
+                    href="courseGrades.html">Grades</a>
+                <a class="text-slate-500 pb-2 hover:text-[#003366] transition-colors font-sidebar-link text-sidebar-link"
+                    href="coursePeople.html">People</a>
+        </header>
+        <!-- Content Area -->
+        <main class="flex-1 p-margin-page max-w-[1200px] mx-auto w-full">
+            <!-- Hero Stats Section -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-stack-lg">
+                <div
+                    class="md:col-span-2 bg-white p-stack-lg border border-[#E0E0E0] shadow-[0px_2px_8px_rgba(0,0,0,0.05)] rounded-lg flex items-center">
+                    <div class="mr-stack-lg">
+                        <div class="text-[#003366] font-label-sm text-label-sm uppercase tracking-wider mb-1">Current
+                            Standing</div>
+                        <h1 class="text-[#001e40] font-h1 text-h1">Advanced Algorithms</h1>
+                        <p class="text-on-surface-variant font-body-md text-body-md mt-1">Computer Science (CS 301) •
+                            Fall 2024</p>
+                    </div>
+                </div>
+                <div
+                    class="bg-primary-container p-stack-lg border border-[#E0E0E0] shadow-[0px_2px_8px_rgba(0,0,0,0.05)] rounded-lg flex flex-col justify-center">
+                    <div class="text-on-primary-container font-label-sm text-label-sm uppercase tracking-wider mb-1">
+                        Weighted GPA</div>
+                    <div class="flex items-baseline">
+                        <span class="text-white font-h1 text-[48px] font-bold">3.88</span>
+                        <span class="text-on-primary-container font-h3 text-h3 ml-2">/ 4.0</span>
+                    </div>
+                    <div class="w-full bg-white/20 h-1.5 mt-4 rounded-full overflow-hidden">
+                        <div class="bg-white h-full" style="width: 92%;"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- Grades Table Container -->
+            <div
+                class="bg-white border border-[#E0E0E0] shadow-[0px_2px_8px_rgba(0,0,0,0.05)] rounded-lg overflow-hidden">
+                <div
+                    class="px-stack-lg py-stack-md border-b border-[#E0E0E0] flex justify-between items-center bg-surface-container-lowest">
+                    <h2 class="text-on-surface font-h2 text-h2">Grade Breakdown</h2>
+                    <div class="flex gap-stack-md">
+                        <button
+                            class="bg-white border border-[#E0E0E0] px-4 py-2 text-[#003366] font-label-sm text-label-sm flex items-center gap-2 hover:bg-surface-container transition-colors">
+                            <span class="material-symbols-outlined text-[18px]"
+                                data-icon="file_download">file_download</span>
+                            Export Report
+                        </button>
+                    </div>
+                </div>
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-surface-container-low border-b border-[#E0E0E0]">
+                            <th
+                                class="px-stack-lg py-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">
+                                Assignment Name</th>
+                            <th
+                                class="px-stack-lg py-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">
+                                Term</th>
+                            <th
+                                class="px-stack-lg py-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">
+                                Weight</th>
+                            <th
+                                class="px-stack-lg py-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider text-right">
+                                Score</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-[#E0E0E0]">
+                        <!-- Row 1 -->
+                        <tr class="hover:bg-surface-container-lowest transition-colors group">
+                            <td class="px-stack-lg py-5">
+                                <div class="flex items-center gap-4">
+                                    <div class="p-2 bg-primary-container/10 rounded">
+                                        <span class="material-symbols-outlined text-primary-container"
+                                            data-icon="description">description</span>
+                                    </div>
+                                    <div>
+                                        <div class="font-h3 text-[16px] text-[#001e40]">Dynamic Programming Problem Set
+                                        </div>
+                                        <div class="text-on-surface-variant text-label-sm">Submitted Sep 14, 2024</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-stack-lg py-5 text-on-surface font-body-md">Fall 2024</td>
+                            <td class="px-stack-lg py-5 text-on-surface-variant font-body-md">15%</td>
+                            <td class="px-stack-lg py-5 text-right">
+                                <span class="font-h3 text-h3 text-[#003366]">94</span>
+                                <span class="text-on-surface-variant text-body-md"> / 100</span>
+                            </td>
+                        </tr>
+                        <!-- Row 2 -->
+                        <tr class="hover:bg-surface-container-lowest transition-colors group">
+                            <td class="px-stack-lg py-5">
+                                <div class="flex items-center gap-4">
+                                    <div class="p-2 bg-primary-container/10 rounded">
+                                        <span class="material-symbols-outlined text-primary-container"
+                                            data-icon="quiz">quiz</span>
+                                    </div>
+                                    <div>
+                                        <div class="font-h3 text-[16px] text-[#001e40]">Midterm Examination</div>
+                                        <div class="text-on-surface-variant text-label-sm">Submitted Oct 02, 2024</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-stack-lg py-5 text-on-surface font-body-md">Fall 2024</td>
+                            <td class="px-stack-lg py-5 text-on-surface-variant font-body-md">30%</td>
+                            <td class="px-stack-lg py-5 text-right">
+                                <span class="font-h3 text-h3 text-[#003366]">88</span>
+                                <span class="text-on-surface-variant text-body-md"> / 100</span>
+                            </td>
+                        </tr>
+                        <!-- Row 3 -->
+                        <tr class="hover:bg-surface-container-lowest transition-colors group">
+                            <td class="px-stack-lg py-5">
+                                <div class="flex items-center gap-4">
+                                    <div class="p-2 bg-primary-container/10 rounded">
+                                        <span class="material-symbols-outlined text-primary-container"
+                                            data-icon="code">code</span>
+                                    </div>
+                                    <div>
+                                        <div class="font-h3 text-[16px] text-[#001e40]">Graph Theory Implementation
+                                        </div>
+                                        <div class="text-on-surface-variant text-label-sm">Submitted Oct 15, 2024</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-stack-lg py-5 text-on-surface font-body-md">Fall 2024</td>
+                            <td class="px-stack-lg py-5 text-on-surface-variant font-body-md">20%</td>
+                            <td class="px-stack-lg py-5 text-right">
+                                <span class="font-h3 text-h3 text-[#003366]">100</span>
+                                <span class="text-on-surface-variant text-body-md"> / 100</span>
+                            </td>
+                        </tr>
+                        <!-- Row 4 -->
+                        <tr class="hover:bg-surface-container-lowest transition-colors group">
+                            <td class="px-stack-lg py-5">
+                                <div class="flex items-center gap-4">
+                                    <div class="p-2 bg-primary-container/10 rounded">
+                                        <span class="material-symbols-outlined text-primary-container"
+                                            data-icon="lab_research">lab_research</span>
+                                    </div>
+                                    <div>
+                                        <div class="font-h3 text-[16px] text-[#001e40]">Heuristic Analysis Report</div>
+                                        <div class="text-on-surface-variant text-label-sm">Submitted Oct 28, 2024</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-stack-lg py-5 text-on-surface font-body-md">Fall 2024</td>
+                            <td class="px-stack-lg py-5 text-on-surface-variant font-body-md">10%</td>
+                            <td class="px-stack-lg py-5 text-right">
+                                <span class="font-h3 text-h3 text-[#003366]">92</span>
+                                <span class="text-on-surface-variant text-body-md"> / 100</span>
+                            </td>
+                        </tr>
+                        <!-- Row 5 (Upcoming) -->
+                        <tr class="opacity-60 bg-surface-container-low/30 group">
+                            <td class="px-stack-lg py-5">
+                                <div class="flex items-center gap-4">
+                                    <div class="p-2 bg-slate-300 rounded">
+                                        <span class="material-symbols-outlined text-slate-600"
+                                            data-icon="history_edu">history_edu</span>
+                                    </div>
+                                    <div>
+                                        <div class="font-h3 text-[16px] text-slate-600">Final Project Submission</div>
+                                        <div class="text-on-surface-variant text-label-sm italic">Due Dec 12, 2024</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-stack-lg py-5 text-on-surface font-body-md">Fall 2024</td>
+                            <td class="px-stack-lg py-5 text-on-surface-variant font-body-md">25%</td>
+                            <td class="px-stack-lg py-5 text-right">
+                                <span class="text-on-surface-variant font-label-sm italic">Pending</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- Summary Footer -->
+                <div
+                    class="bg-surface-container-low p-stack-lg flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-on-surface-variant" data-icon="info">info</span>
+                        <p class="text-on-surface-variant font-body-md">Grades reflect all submitted coursework to date.
+                        </p>
+                    </div>
+                    <div class="bg-[#003366] text-white px-6 py-4 rounded-lg flex items-center gap-8 shadow-sm">
+                        <div class="text-center">
+                            <div class="text-white/70 text-xs uppercase font-bold tracking-widest mb-1">Points Earned
+                            </div>
+                            <div class="font-h3 text-h3">374 / 400</div>
+                        </div>
+                        <div class="w-px h-10 bg-white/20"></div>
+                        <div class="text-center">
+                            <div class="text-white/70 text-xs uppercase font-bold tracking-widest mb-1">Percentage</div>
+                            <div class="font-h1 text-h2 leading-none">93.5%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Bento Grade Context Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter mt-stack-lg">
+                <div
+                    class="bg-white p-stack-md border border-[#E0E0E0] shadow-[0px_2px_8px_rgba(0,0,0,0.05)] rounded-lg">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="material-symbols-outlined text-[#003366]"
+                            data-icon="trending_up">trending_up</span>
+                        <h3 class="font-h3 text-[18px]">Class Average</h3>
+                    </div>
+                    <div class="text-[32px] font-bold text-[#001e40] mb-2">82.4%</div>
+                    <p class="text-on-surface-variant text-label-sm">You are performing 11.1% above the class average.
+                    </p>
+                </div>
+                <div
+                    class="bg-white p-stack-md border border-[#E0E0E0] shadow-[0px_2px_8px_rgba(0,0,0,0.05)] rounded-lg">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="material-symbols-outlined text-[#003366]" data-icon="pie_chart">pie_chart</span>
+                        <h3 class="font-h3 text-[18px]">Grade Weighting</h3>
+                    </div>
+                    <ul class="space-y-2">
+                        <li class="flex justify-between text-label-sm">
+                            <span class="text-on-surface-variant">Exams</span>
+                            <span class="font-bold">45%</span>
+                        </li>
+                        <li class="flex justify-between text-label-sm">
+                            <span class="text-on-surface-variant">Assignments</span>
+                            <span class="font-bold">30%</span>
+                        </li>
+                        <li class="flex justify-between text-label-sm">
+                            <span class="text-on-surface-variant">Final Project</span>
+                            <span class="font-bold">25%</span>
+                        </li>
+                    </ul>
+                </div>
+                <div
+                    class="bg-white p-stack-md border border-[#E0E0E0] shadow-[0px_2px_8px_rgba(0,0,0,0.05)] rounded-lg">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="material-symbols-outlined text-[#003366]" data-icon="insights">insights</span>
+                        <h3 class="font-h3 text-[18px]">Next Milestone</h3>
+                    </div>
+                    <div class="text-[#001e40] font-h3 text-[16px] mb-1">Final Project</div>
+                    <p class="text-on-surface-variant text-label-sm mb-3">Due in 14 days. Aim for 86% or higher to
+                        maintain an A.</p>
+                    <div class="w-full bg-surface-container h-2 rounded-full">
+                        <div class="bg-[#003366] h-full rounded-full" style="width: 75%;"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

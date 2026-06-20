@@ -1,0 +1,69 @@
+CREATE DATABASE myDatabase
+
+-- Create Users table
+CREATE TABLE Users (
+    UID INT PRIMARY KEY AUTO_INCREMENT,
+    UserName VARCHAR(255) NOT NULL,
+    Email VARCHAR(255) NOT NULL UNIQUE,
+    Password VARCHAR(255) NOT NULL,
+    Role CHAR(20)
+);
+
+-- Create Course table
+CREATE TABLE Course (
+    CID INT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(255) NOT NULL,
+    Content TEXT,
+);
+
+-- Create Module table
+CREATE TABLE Module (
+    MID INT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(255) NOT NULL,
+    Content VARCHAR(255)
+);
+
+-- Create Lesson table
+CREATE TABLE Lesson (
+    PID INT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(255) NOT NULL,
+    Content VARCHAR(255)
+);
+
+-- Create Course_User table
+CREATE TABLE Course_User (
+    CID INT,
+    UID INT,
+    PRIMARY KEY (CID, UID),
+    FOREIGN KEY (CID) REFERENCES Course(CID),
+    FOREIGN KEY (UID) REFERENCES Users(UID)
+);
+
+-- Create Course_Module table
+CREATE TABLE Course_Module (
+    CID INT,
+    MID INT,
+    PRIMARY KEY (CID, MID),
+    FOREIGN KEY (CID) REFERENCES Course(CID),
+    FOREIGN KEY (MID) REFERENCES Module(MID)
+);
+
+-- Create Module_Lesson table
+CREATE TABLE Module_Lesson (
+    MID INT,
+    PID INT,
+    PRIMARY KEY (MID, PID),
+    FOREIGN KEY (MID) REFERENCES Module(MID),
+    FOREIGN KEY (PID) REFERENCES Lesson(PID)
+);
+
+-- Create Lesson_User table
+CREATE TABLE Lesson_User (
+    UID INT,
+    PID INT,
+    Score FLOAT,
+    Completed BOOLEAN,
+    PRIMARY KEY (UID, PID),
+    FOREIGN KEY (UID) REFERENCES Users(UID),
+    FOREIGN KEY (PID) REFERENCES Lesson(PID)
+);
