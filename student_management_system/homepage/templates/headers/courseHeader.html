@@ -5,16 +5,48 @@
                 <h1 class="text-lg font-black text-[#003366] font-h3">Course Interface</h1>
             </div>
             <nav class="flex gap-8">
-                <a class="text-slate-500 pb-2 hover:text-[#003366] transition-colors font-sidebar-link text-sidebar-link"
-                    href="courseHome.html">Home</a>
-                <a class="text-slate-500 pb-2 hover:text-[#003366] transition-colors font-sidebar-link text-sidebar-link"
-                    href="courseAnnouncements.html">Announcements</a>
-                <a class="text-slate-500 pb-2 hover:text-[#003366] transition-colors font-sidebar-link text-sidebar-link"
-                    href="courseModules.html">Modules</a>
+                {% if pageContent == 'content/courseHome.html' %}
                 <a class="text-[#003366] border-b-2 border-[#003366] pb-2 font-sidebar-link text-sidebar-link"
-                    href="courseAssignments.html">Assignments</a>
+                    href="http://127.0.0.1:8000/course/Home">Home</a>
+                {% else %}
                 <a class="text-slate-500 pb-2 hover:text-[#003366] transition-colors font-sidebar-link text-sidebar-link"
-                    href="courseGrades.html">Grades</a>
+                    href="http://127.0.0.1:8000/course/Home">Home</a>
+                {% endif %}
+                {% if pageContent == 'content/courseAnnouncements.html' %}
+                <a class="text-[#003366] border-b-2 border-[#003366] pb-2 font-sidebar-link text-sidebar-link"
+                    href="http://127.0.0.1:8000/course/Announcements">Announcements</a>
+                {% else %}
                 <a class="text-slate-500 pb-2 hover:text-[#003366] transition-colors font-sidebar-link text-sidebar-link"
-                    href="coursePeople.html">People</a>
+                    href="http://127.0.0.1:8000/course/Announcements">Announcements</a>
+                {% endif %} 
+                {% if pageContent == 'content/courseModules.html' %}
+                <a class="text-[#003366] border-b-2 border-[#003366] pb-2 font-sidebar-link text-sidebar-link"
+                    href="http://127.0.0.1:8000/course/Modules">Modules</a>
+                {% else %}
+                <a class="text-slate-500 pb-2 hover:text-[#003366] transition-colors font-sidebar-link text-sidebar-link"
+                    href="http://127.0.0.1:8000/course/Modules">Modules</a>
+                {% endif %}
+                {% if pageContent == 'content/courseAssignments.html' %}
+                <a class="text-[#003366] border-b-2 border-[#003366] pb-2 font-sidebar-link text-sidebar-link"
+                    href="http://127.0.0.1:8000/course/Assignments">Assignments</a>
+                {% else %}
+                <a class="text-slate-500 pb-2 hover:text-[#003366] transition-colors font-sidebar-link text-sidebar-link"
+                    href="http://127.0.0.1:8000/course/Assignments">Assignments</a>
+                {% endif %}
+                {% if pageContent == 'content/courseGrades.html' %}
+                <a class="text-[#003366] border-b-2 border-[#003366] pb-2 font-sidebar-link text-sidebar-link"
+                    href="http://127.0.0.1:8000/course/Grades">Grades</a>
+                {% else %}
+                <a class="text-slate-500 pb-2 hover:text-[#003366] transition-colors font-sidebar-link text-sidebar-link"
+                    href="http://127.0.0.1:8000/course/Grades">Grades</a>
+                {% endif %}
+                {% if pageContent == 'content/coursePeople.html' %}
+                <a class="text-[#003366] border-b-2 border-[#003366] pb-2 font-sidebar-link text-sidebar-link"
+                    href="http://127.0.0.1:8000/course/People">People</a>
+                {% else %}
+                <a class="text-slate-500 pb-2 hover:text-[#003366] transition-colors font-sidebar-link text-sidebar-link"
+                    href="http://127.0.0.1:8000/course/People">People</a>
+                {% endif %}
+
+            </nav>
         </header>
