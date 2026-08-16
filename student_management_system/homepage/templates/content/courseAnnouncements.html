@@ -9,6 +9,73 @@
                     <span class="font-label-sm text-label-sm uppercase tracking-widest">CS 301</span>
                 </div>
                 <h2 class="font-h1 text-h1 text-primary">Announcements</h2>
+                <div class="mb-4">
+                        <!-- Trigger Button -->
+                        <button
+                            class="flex items-center gap-2 bg-[#003366] text-white px-6 py-2.5 font-label-sm text-label-sm rounded-lg hover:opacity-90 transition-opacity"
+                            id="create-announcement-trigger"
+                        >
+                            <span class="material-symbols-outlined text-[20px]">add</span>
+                            Create Announcement
+                        </button>
+                        <!-- Minimal Form (Hidden by default, would be toggled via JS in a real app) -->
+                        <div
+                            class="hidden mt-6 bg-white border border-[#E0E0E0] p-8 shadow-[0px_2px_8px_rgba(0,0,0,0.05)]"
+                            id="announcement-form"
+                        >
+                            <h3 class="font-h3 text-h3 text-on-surface mb-6">New Announcement</h3>
+                            <div class="space-y-6">
+                                <div>
+                                    <label
+                                        class="block font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest mb-2"
+                                        >Title</label
+                                    >
+                                    <input
+                                        class="w-full border border-[#E0E0E0] px-4 py-2.5 rounded-lg focus:outline-none focus:border-[#003366] font-body-md text-on-surface"
+                                        placeholder="Enter announcement title..."
+                                        type="text"
+                                    />
+                                </div>
+                                <div>
+                                    <label
+                                        class="block font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest mb-2"
+                                        >Content</label
+                                    >
+                                    <textarea
+                                        class="w-full border border-[#E0E0E0] px-4 py-2.5 rounded-lg focus:outline-none focus:border-[#003366] font-body-md text-on-surface resize-none"
+                                        placeholder="Write your announcement here..."
+                                        rows="4"
+                                    ></textarea>
+                                </div>
+                                <div class="flex justify-end gap-4 pt-2">
+                                    <button
+                                        class="px-6 py-2.5 font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors"
+                                    id="cancel-announcement-trigger">
+                                        Cancel
+                                    </button>
+                                    <button
+                                        class="bg-[#003366] text-white px-8 py-2.5 font-label-sm text-label-sm rounded-lg hover:opacity-90 transition-opacity"
+                                    >
+                                        Post Announcement
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        // Simple toggle logic for demonstration
+                        document.getElementById("create-announcement-trigger")?.addEventListener("click", function () {
+                            const form = document.getElementById("announcement-form");
+                            form.classList.toggle("hidden");
+                            this.classList.toggle("hidden");
+                        });
+                        document.getElementById("cancel-announcement-trigger")?.addEventListener("click", function () {
+                            const form = document.getElementById("announcement-form");
+                            const button = document.getElementById("create-announcement-trigger");
+                            form.classList.toggle("hidden");
+                            button.classList.toggle("hidden");
+                        });
+                    </script>
             </div>
             <!-- Announcements Feed (Bento/Card Mix) -->
             <div class="grid grid-cols-1 gap-8">

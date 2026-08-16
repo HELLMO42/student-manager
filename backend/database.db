@@ -1,4 +1,4 @@
-CREATE DATABASE myDatabase
+CREATE DATABASE myDatabase;
 
 -- Create Users table
 CREATE TABLE Users (
