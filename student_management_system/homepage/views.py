@@ -5,6 +5,8 @@ from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.db import connection
 from .forms import RegistrationForm, CourseForm
+import json
+from django.http import JsonResponse
 
 # Create your views here.
 
@@ -29,15 +31,15 @@ def dashboard(request):
     'pageHeader': 'headers/dashboardHeader.html',
     'pageContent': 'content/dashboard.html',
     'courses': courses,
-    'form': CourseForm(),
   }
   return HttpResponse(template.render(context, request))
 
-def coursePage(request, pageName):
+def coursePage(request, courseId, pageName):
   template = loader.get_template('index.html')
   context = {
     'pageHeader': 'headers/courseHeader.html',
-    'pageContent': f'content/course{pageName}.html'
+    'pageContent': f'content/course{pageName}.html',
+    'courseId': courseId,
   }
   return HttpResponse(template.render(context, request))
 
@@ -73,45 +75,68 @@ def hello_world(request):
 def scores(request):
   return HttpResponse("Scores Page")
 
-def createCourse(request):
-    print("createCourse called")
-    print("Request method:", request.method)
+# def createCourse(request):
+#     print("createCourse called")
+#     print("Request method:", request.method)
 
-    with connection.cursor() as cursor:
-        cursor.execute("SELECT * FROM course")
-        courses = cursor.fetchall()
+#     with connection.cursor() as cursor:
+#         cursor.execute("SELECT * FROM course")
+#         courses = cursor.fetchall()
 
+#     if request.method == 'POST':
+#         form = CourseForm(request.POST)
+
+#         if form.is_valid():
+#             print("Form is valid")
+#             name = form.cleaned_data['name']
+#             description = form.cleaned_data['description']
+
+#             with connection.cursor() as cursor:
+#                 cursor.execute(
+#                     "INSERT INTO course (name, content) VALUES (%s, %s)",
+#                     [name, description]
+#                 )
+
+#             # Stay on the same page
+#             return render(request, 'index.html', {
+#                 'form': CourseForm(),
+#                 'success': True,
+#                 'pageHeader': 'headers/dashboardHeader.html',
+#                 'pageContent': 'content/dashboard.html',
+#                 'courses': courses,
+#             })
+
+#         # Form is invalid — render the same page with errors
+#         print("Form is invalid")
+#         print("Form errors:", form.errors)
+#         return render(request, 'index.html', {
+#             'form': form,
+#             'pageHeader': 'headers/dashboardHeader.html',
+#             'pageContent': 'content/dashboard.html',
+#             'courses': courses,
+#         })
+
+def api_create_course(request):
     if request.method == 'POST':
-        form = CourseForm(request.POST)
+      data = json.loads(request.body)
+      course_name = data.get('title')
+      # course_instructor = data.get('instructor')
+      # course_department = data.get('department')
+      course_description = data.get('description')
+      course_thumbnail = data.get('thumbnail')
 
-        if form.is_valid():
-            print("Form is valid")
-            name = form.cleaned_data['name']
-            description = form.cleaned_data['description']
+      with connection.cursor() as cursor:
+        cursor.execute(
+            "INSERT INTO course (name, content, thumbnail) VALUES (%s, %s, %s)",
+            [course_name, course_description, course_thumbnail]
+        )
 
-            with connection.cursor() as cursor:
-                cursor.execute(
-                    "INSERT INTO course (name, content) VALUES (%s, %s)",
-                    [name, description]
-                )
+      return JsonResponse({'success': True, 'message': 'Course created successfully.'})
 
-            # Stay on the same page
-            return render(request, 'index.html', {
-                'form': CourseForm(),
-                'success': True,
-                'pageHeader': 'headers/dashboardHeader.html',
-                'pageContent': 'content/dashboard.html',
-                'courses': courses,
-            })
+def api_get_courses(request):
+    if request.method == 'POST':
+      courseId = request.POST.get('courseId')
+      with connection.cursor() as cursor:
+        cursor.execute("DELETE FROM course WHERE CID = %s", [courseId])
 
-        # Form is invalid — render the same page with errors
-        print("Form is invalid")
-        print("Form errors:", form.errors)
-        return render(request, 'index.html', {
-            'form': form,
-            'pageHeader': 'headers/dashboardHeader.html',
-            'pageContent': 'content/dashboard.html',
-            'courses': courses,
-        })
-
-    
+      return redirect('dashboard')

@@ -5,8 +5,6 @@
                 <h1 class="text-lg font-black text-[#003366] font-h3">Course Interface</h1>
             </div>
             <nav class="flex gap-8">
-                <a class="text-slate-500 pb-2 hover:text-[#003366] transition-colors font-sidebar-link text-sidebar-link"
-                    href="http://127.0.0.1:8000/Scores">Scores</a>
                 {% if pageContent == 'content/courseHome.html' %}
                 <a class="text-[#003366] border-b-2 border-[#003366] pb-2 font-sidebar-link text-sidebar-link"
                     href="http://127.0.0.1:8000/course/Home">Home</a>
@@ -34,13 +32,6 @@
                 {% else %}
                 <a class="text-slate-500 pb-2 hover:text-[#003366] transition-colors font-sidebar-link text-sidebar-link"
                     href="http://127.0.0.1:8000/course/Assignments">Assignments</a>
-                {% endif %}
-                {% if pageContent == 'content/courseGrades.html' %}
-                <a class="text-[#003366] border-b-2 border-[#003366] pb-2 font-sidebar-link text-sidebar-link"
-                    href="http://127.0.0.1:8000/course/Grades">Grades</a>
-                {% else %}
-                <a class="text-slate-500 pb-2 hover:text-[#003366] transition-colors font-sidebar-link text-sidebar-link"
-                    href="http://127.0.0.1:8000/course/Grades">Grades</a>
                 {% endif %}
                 {% if pageContent == 'content/coursePeople.html' %}
                 <a class="text-[#003366] border-b-2 border-[#003366] pb-2 font-sidebar-link text-sidebar-link"

@@ -1,0 +1,690 @@
+<!doctype html>
+
+<html class="light" lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <title>Professor Dashboard | LMS</title>
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+            rel="stylesheet"
+        />
+        <script id="tailwind-config">
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        colors: {
+                            "on-tertiary-fixed-variant": "#723610",
+                            "on-primary-container": "#799dd6",
+                            "surface-container-lowest": "#ffffff",
+                            background: "#f9f9f9",
+                            "primary-fixed": "#d5e3ff",
+                            "surface-container-high": "#e8e8e8",
+                            "on-secondary": "#ffffff",
+                            "on-primary-fixed-variant": "#1f477b",
+                            outline: "#737780",
+                            "on-error": "#ffffff",
+                            error: "#ba1a1a",
+                            "primary-fixed-dim": "#a7c8ff",
+                            "secondary-container": "#dcdddd",
+                            primary: "#001e40",
+                            "surface-bright": "#f9f9f9",
+                            "on-background": "#1a1c1c",
+                            "on-primary-fixed": "#001b3c",
+                            "surface-container-low": "#f4f3f3",
+                            "inverse-surface": "#2f3131",
+                            "tertiary-container": "#592300",
+                            secondary: "#5d5f5f",
+                            "tertiary-fixed": "#ffdbca",
+                            tertiary: "#381300",
+                            "outline-variant": "#c3c6d1",
+                            "on-secondary-container": "#5f6161",
+                            "error-container": "#ffdad6",
+                            "inverse-primary": "#a7c8ff",
+                            "on-error-container": "#93000a",
+                            "surface-dim": "#dadada",
+                            "on-tertiary-container": "#d8885c",
+                            "secondary-fixed": "#e2e2e2",
+                            "on-tertiary-fixed": "#341100",
+                            "surface-container": "#eeeeee",
+                            "tertiary-fixed-dim": "#ffb690",
+                            "on-surface-variant": "#43474f",
+                            "on-tertiary": "#ffffff",
+                            "on-surface": "#1a1c1c",
+                            "surface-variant": "#e2e2e2",
+                            "secondary-fixed-dim": "#c6c6c7",
+                            "on-secondary-fixed-variant": "#454747",
+                            "on-primary": "#ffffff",
+                            "surface-container-highest": "#e2e2e2",
+                            surface: "#f9f9f9",
+                            "on-secondary-fixed": "#1a1c1c",
+                            "inverse-on-surface": "#f1f1f1",
+                            "surface-tint": "#3a5f94",
+                            "primary-container": "#003366",
+                        },
+                        borderRadius: {
+                            DEFAULT: "0.125rem",
+                            lg: "0.25rem",
+                            xl: "0.5rem",
+                            full: "0.75rem",
+                        },
+                        spacing: {
+                            gutter: "24px",
+                            "stack-sm": "8px",
+                            "margin-page": "40px",
+                            "sidebar-width": "240px",
+                            "container-max-width": "1200px",
+                            "stack-lg": "32px",
+                            "stack-md": "16px",
+                        },
+                        fontFamily: {
+                            h1: ["Inter"],
+                            "label-sm": ["Inter"],
+                            h3: ["Inter"],
+                            "sidebar-link": ["Inter"],
+                            "body-lg": ["Inter"],
+                            "body-md": ["Inter"],
+                            h2: ["Inter"],
+                        },
+                        fontSize: {
+                            h1: ["32px", { lineHeight: "1.2", letterSpacing: "-0.02em", fontWeight: "700" }],
+                            "label-sm": ["14px", { lineHeight: "1.2", letterSpacing: "0.01em", fontWeight: "500" }],
+                            h3: ["20px", { lineHeight: "1.4", fontWeight: "600" }],
+                            "sidebar-link": ["15px", { lineHeight: "1.0", fontWeight: "500" }],
+                            "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+                            "body-md": ["16px", { lineHeight: "1.5", fontWeight: "400" }],
+                            h2: ["24px", { lineHeight: "1.3", fontWeight: "600" }],
+                        },
+                    },
+                },
+            };
+        </script>
+        <style>
+            body {
+                font-family: "Inter", sans-serif;
+                background-color: #f9f9f9;
+            }
+            .material-symbols-outlined {
+                font-variation-settings:
+                    "FILL" 0,
+                    "wght" 400,
+                    "GRAD" 0,
+                    "opsz" 24;
+            }
+            .card-shadow {
+                shadow: 0px 2px 8px rgba(0, 0, 0, 0.05);
+            }
+        </style>
+        <style>
+            body {
+                min-height: max(884px, 100dvh);
+            }
+        </style>
+    </head>
+    <body class="text-on-surface">
+        <!-- NavigationDrawer (Shared Component) -->
+        <aside
+            class="fixed left-0 top-0 h-screen w-[240px] z-40 bg-[#003366] dark:bg-slate-950 flex flex-col h-full py-6 border-r border-blue-800 dark:border-slate-800 hidden md:flex"
+        >
+            <!-- Brand / Header -->
+            <div class="px-6 mb-10 flex flex-col gap-1">
+                <span class="text-white text-xl font-bold tracking-tight">EduCore LMS</span>
+                <div class="flex items-center gap-3 mt-6">
+                    <img
+                        alt="Professor Smith"
+                        class="w-10 h-10 rounded-full border-2 border-white/20"
+                        data-alt="Professional portrait of a middle-aged academic man with glasses in a clean office setting, soft natural lighting"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAg4R0k_dl-n2M6VY9LI61JRwS7NqDQZJpwKO57yIxwlIXW30CBAUf9zNFVylE3E2UnTx-15hfGrcoXO-c0HKbg6C9pwrp1JQhcVNEpo0UKvZ72AG4-SdKUYSty4R1POy2pRRFVKnVmdgfY5nIuwF4s_6HKmf9HRX6MDq9K4gZIk8IdT_4GI5yDlqhgTUzqUAUeLaZBZsPgQR4fWtcIbn0mzzSwuScRdApPwBZWKG837GDCCGyTd3VIImdSpclF7ROZu9vjylO9APvB"
+                    />
+                    <div class="flex flex-col">
+                        <span class="text-white font-sidebar-link text-sidebar-link">Professor Smith</span>
+                        <span class="text-blue-200/60 text-xs font-medium">Lead Instructor</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Navigation Links -->
+            <nav class="flex-1">
+                <ul class="space-y-1">
+                    <!-- Dashboard (Active) -->
+                    <li>
+                        <a
+                            class="flex items-center gap-3 px-4 py-3 bg-white/10 text-white border-l-4 border-white font-inter text-sm font-medium transition-all duration-200"
+                            href="#"
+                        >
+                            <span
+                                class="material-symbols-outlined"
+                                data-icon="dashboard"
+                                style="font-variation-settings: &quot;FILL&quot; 1"
+                                >dashboard</span
+                            >
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <!-- My Courses -->
+                    <li>
+                        <a
+                            class="flex items-center gap-3 px-4 py-3 text-blue-100/70 hover:text-white hover:bg-white/5 font-inter text-sm font-medium transition-all duration-200"
+                            href="#"
+                        >
+                            <span class="material-symbols-outlined" data-icon="school">school</span>
+                            <span>My Courses</span>
+                        </a>
+                    </li>
+                    <!-- Assignments -->
+                    <li>
+                        <a
+                            class="flex items-center gap-3 px-4 py-3 text-blue-100/70 hover:text-white hover:bg-white/5 font-inter text-sm font-medium transition-all duration-200"
+                            href="#"
+                        >
+                            <span class="material-symbols-outlined" data-icon="assignment">assignment</span>
+                            <span>Assignments</span>
+                        </a>
+                    </li>
+                    <!-- Calendar -->
+                    <li>
+                        <a
+                            class="flex items-center gap-3 px-4 py-3 text-blue-100/70 hover:text-white hover:bg-white/5 font-inter text-sm font-medium transition-all duration-200"
+                            href="#"
+                        >
+                            <span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+                            <span>Calendar</span>
+                        </a>
+                    </li>
+                    <!-- Settings -->
+                    <li>
+                        <a
+                            class="flex items-center gap-3 px-4 py-3 text-blue-100/70 hover:text-white hover:bg-white/5 font-inter text-sm font-medium transition-all duration-200"
+                            href="#"
+                        >
+                            <span class="material-symbols-outlined" data-icon="settings">settings</span>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+        <!-- Content Canvas -->
+        <main class="md:ml-[240px] min-h-screen bg-background">
+            <!-- Header -->
+            <header
+                class="flex items-center justify-between px-margin-page py-8 sticky top-0 bg-background/80 backdrop-blur-sm z-30"
+            >
+                <h1 class="font-h1 text-h1 text-primary">Dashboard</h1>
+                <div class="flex items-center gap-stack-md">
+                    <button
+                        class="relative p-2 text-secondary hover:bg-surface-container rounded-full transition-colors"
+                    >
+                        <span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+                        <span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+                    </button>
+                    <div class="h-8 w-[1px] bg-outline-variant mx-2"></div>
+                    <div class="flex items-center gap-3">
+                        <span class="font-label-sm text-label-sm text-secondary hidden sm:block">Professor Smith</span>
+                        <img
+                            alt="User profile"
+                            class="w-10 h-10 rounded-full object-cover"
+                            data-alt="Close up portrait of a smiling male professor with glasses in professional attire"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuADdZMq2HsGm--LGF6DJ6_BoJsRaABJEeY3E_ShCsQNnwlExXguhNmDFHRTGN8z301JznIQAQpA31rQQOU-s6feLRGqNTYZPhnQbbnqb7z0KYX7kn6Z5sHSWAoU5uwBa2NosqA-db690DmQ9WCnfV37ldxVNY55zE_QEt4_GGlQ0Ri8uYi_4zLP2g5TJaS9HYtJ_xy-G3XEhA2ixl7OS9ew3UltJyANULAOXO-K1HFD_29wEt5hqeMwTaoe9U8QG7RWVqAqNhvxq4Gs"
+                        />
+                    </div>
+                </div>
+            </header>
+            <!-- Dashboard Content Grid -->
+            <div class="max-w-[1200px] mx-auto px-margin-page pb-margin-page">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-stack-lg">
+                    <!-- Main Content (8 cols) -->
+                    <div class="lg:col-span-8 space-y-stack-lg">
+                        <!-- My Courses Section -->
+                        <section>
+                            <div class="flex items-center justify-between mb-stack-md">
+                                <h2 class="font-h2 text-h2 text-primary">My Courses</h2>
+                                <button class="text-primary-container font-label-sm text-label-sm hover:underline">
+                                    View all courses</button
+                                ><button
+                                    class="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-error border border-error/40 hover:border-error hover:bg-error/10 rounded transition-colors ml-3"
+                                    id="open-delete-course-btn"
+                                >
+                                    <span class="material-symbols-outlined text-sm">delete</span
+                                    ><span>Delete Course</span>
+                                </button>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-stack-md">
+                                <!-- Course Card 1 -->
+                                <div
+                                    class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden flex flex-col hover:shadow-md transition-shadow"
+                                >
+                                    <div class="h-32 bg-primary-container relative">
+                                        <img
+                                            class="w-full h-full object-cover opacity-60"
+                                            data-alt="Clean desk with high-end designer tools and minimalist digital wireframes on screen"
+                                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-SSQaYc_MRCnmCyF-0kTs_PQ9PnDcdH3LlhyEcnFf2SO5IOuo8LRrGLZlrXK-t1Jv80tYUe9biJT0YjDkhGiycvWdJBW996HM2ShdXneKpfrElMQmrbABDNJiFiINFs_Au_kv_UW3Tt_TtZTWVgjNSpSEp3_GYMpLt-4MpyWixBhBL3__w9xVd5gUPMnHZR2kzG4Qzb_x7BdAjp6BmLWkaqYv4HkWfK7SVDwgjsJH4nLaIgBJA49AxZ6NOJoBOVrqRx0p4Q1g312u"
+                                        />
+                                        <div
+                                            class="absolute top-3 right-3 bg-white/90 backdrop-blur px-2 py-1 rounded text-[10px] font-bold text-primary tracking-widest uppercase"
+                                        >
+                                            UX DESIGN
+                                        </div>
+                                    </div>
+                                    <div class="p-6 flex flex-col flex-1">
+                                        <h3 class="font-h3 text-h3 text-primary mb-2 leading-tight">
+                                            Introduction to UX Design
+                                        </h3>
+                                        <p class="text-on-surface-variant font-body-md text-sm mb-4 line-clamp-2">
+                                            Master the fundamentals of user research, wireframing, and interactive
+                                            prototyping.
+                                        </p>
+                                        <div
+                                            class="mt-auto pt-4 flex items-center justify-between border-t border-outline-variant"
+                                        >
+                                            <div class="flex items-center gap-2">
+                                                <span
+                                                    class="material-symbols-outlined text-sm text-secondary"
+                                                    data-icon="groups"
+                                                    >groups</span
+                                                >
+                                                <span class="text-xs text-secondary font-medium">124 Students</span>
+                                            </div>
+                                            <div class="flex -space-x-2">
+                                                <div
+                                                    class="w-6 h-6 rounded-full bg-primary-fixed border-2 border-white"
+                                                ></div>
+                                                <div
+                                                    class="w-6 h-6 rounded-full bg-secondary-container border-2 border-white"
+                                                ></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Course Card 2 -->
+                                <div
+                                    class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden flex flex-col hover:shadow-md transition-shadow"
+                                >
+                                    <div class="h-32 bg-[#2d5a27] relative">
+                                        <img
+                                            class="w-full h-full object-cover opacity-60"
+                                            data-alt="Abstract complex mathematical formulas floating in a dark green chalkboard environment"
+                                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuClK5ThJw5RAXzC-oXuxuLaTBpN9-l29jw0glUvKo9gAKcP6vKRHHBzQwG-15jdi6LyZWXn39Fco-jB9lVEyiL2FCc4J10ZGPcep_AZjCVILR7huHdH14SNQFqEzNZ5zxc_Ja203EQF_bw3w-z0Ro3CGBqHw5ldLU_K9hOgVjYFv3uyqYgesbp4iqWKSfV1Z25ZLf9qHOUc3Ovy5DbU7KimCZtozgbVAw0aVUTjY47GUyD8fEs2DCob_YIURd4OKDIq0LS78O7-DQIs"
+                                        />
+                                        <div
+                                            class="absolute top-3 right-3 bg-white/90 backdrop-blur px-2 py-1 rounded text-[10px] font-bold text-primary tracking-widest uppercase"
+                                        >
+                                            STEM
+                                        </div>
+                                    </div>
+                                    <div class="p-6 flex flex-col flex-1">
+                                        <h3 class="font-h3 text-h3 text-primary mb-2 leading-tight">
+                                            Advanced Mathematics
+                                        </h3>
+                                        <p class="text-on-surface-variant font-body-md text-sm mb-4 line-clamp-2">
+                                            Exploring multi-variable calculus and linear algebra for engineering
+                                            applications.
+                                        </p>
+                                        <div
+                                            class="mt-auto pt-4 flex items-center justify-between border-t border-outline-variant"
+                                        >
+                                            <div class="flex items-center gap-2">
+                                                <span
+                                                    class="material-symbols-outlined text-sm text-secondary"
+                                                    data-icon="groups"
+                                                    >groups</span
+                                                >
+                                                <span class="text-xs text-secondary font-medium">82 Students</span>
+                                            </div>
+                                            <div class="flex -space-x-2">
+                                                <div
+                                                    class="w-6 h-6 rounded-full bg-primary-fixed border-2 border-white"
+                                                ></div>
+                                                <div
+                                                    class="w-6 h-6 rounded-full bg-secondary-container border-2 border-white"
+                                                ></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Course Card 3 -->
+                                <div
+                                    class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden flex flex-col hover:shadow-md transition-shadow"
+                                >
+                                    <div class="h-32 bg-[#8c3b1a] relative">
+                                        <img
+                                            class="w-full h-full object-cover opacity-60"
+                                            data-alt="Graphs and charts on a computer screen representing digital analytics and marketing growth"
+                                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKND46yjHSdaK180UhQxpfmZLXoW1WfZyJtBEjclKpLu4rQ1zNAxEYN54m1Ab9hX2TlmFD5TtjU1N6y43Na2MiLUscKdOpbMi8vCJVsWKNYrojnDTnhgSolaGKvkxRWLjJtbSh7lQ1sOMfzc274eBlEDaU7cXcTLjKBQRqsp34JpY86MHakzjverF6goTx3nmFYR060T0KNEh9fGIC9VHFHO5hLiHuGCDstLPZcf8nsMcmjaEAfMa6tDqmE5axT9hR5G8y5GQ4Mabo"
+                                        />
+                                        <div
+                                            class="absolute top-3 right-3 bg-white/90 backdrop-blur px-2 py-1 rounded text-[10px] font-bold text-primary tracking-widest uppercase"
+                                        >
+                                            MARKETING
+                                        </div>
+                                    </div>
+                                    <div class="p-6 flex flex-col flex-1">
+                                        <h3 class="font-h3 text-h3 text-primary mb-2 leading-tight">
+                                            Digital Marketing 101
+                                        </h3>
+                                        <p class="text-on-surface-variant font-body-md text-sm mb-4 line-clamp-2">
+                                            A comprehensive overview of SEO, social media strategies, and content
+                                            funnels.
+                                        </p>
+                                        <div
+                                            class="mt-auto pt-4 flex items-center justify-between border-t border-outline-variant"
+                                        >
+                                            <div class="flex items-center gap-2">
+                                                <span
+                                                    class="material-symbols-outlined text-sm text-secondary"
+                                                    data-icon="groups"
+                                                    >groups</span
+                                                >
+                                                <span class="text-xs text-secondary font-medium">210 Students</span>
+                                            </div>
+                                            <div class="flex -space-x-2">
+                                                <div
+                                                    class="w-6 h-6 rounded-full bg-primary-fixed border-2 border-white"
+                                                ></div>
+                                                <div
+                                                    class="w-6 h-6 rounded-full bg-secondary-container border-2 border-white"
+                                                ></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Add New Course Card -->
+                                <button
+                                    class="bg-surface-container-low border-2 border-dashed border-outline-variant rounded-lg flex flex-col items-center justify-center p-6 text-secondary hover:text-primary hover:border-primary transition-all group"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-4xl mb-2 group-hover:scale-110 transition-transform"
+                                        data-icon="add_circle"
+                                        >add_circle</span
+                                    >
+                                    <span class="font-label-sm text-label-sm">Create New Course</span>
+                                </button>
+                            </div>
+                        </section>
+                        <!-- Recent Announcements Section -->
+                        <section>
+                            <h2 class="font-h2 text-h2 text-primary mb-stack-md">Recent Announcements</h2>
+                            <div
+                                class="bg-surface-container-lowest border border-outline-variant rounded-lg p-6 space-y-6"
+                            >
+                                <!-- Announcement 1 -->
+                                <div class="flex gap-4">
+                                    <div
+                                        class="flex-shrink-0 w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-white"
+                                    >
+                                        <span class="material-symbols-outlined" data-icon="campaign">campaign</span>
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="flex items-center justify-between mb-1">
+                                            <h4 class="font-sidebar-link text-primary font-bold">
+                                                New Policy on AI Usage
+                                            </h4>
+                                            <span class="text-xs text-secondary">2 hours ago</span>
+                                        </div>
+                                        <p class="text-on-surface-variant font-body-md text-sm leading-relaxed">
+                                            The university has updated the guidelines for academic integrity regarding
+                                            the use of generative AI tools in assignments...
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="h-[1px] bg-outline-variant"></div>
+                                <!-- Announcement 2 -->
+                                <div class="flex gap-4">
+                                    <div
+                                        class="flex-shrink-0 w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-primary"
+                                    >
+                                        <span class="material-symbols-outlined" data-icon="event_note">event_note</span>
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="flex items-center justify-between mb-1">
+                                            <h4 class="font-sidebar-link text-primary font-bold">
+                                                Midterm Grade Submission
+                                            </h4>
+                                            <span class="text-xs text-secondary">Yesterday</span>
+                                        </div>
+                                        <p class="text-on-surface-variant font-body-md text-sm leading-relaxed">
+                                            Reminder: All midterm grades must be finalized and uploaded to the portal by
+                                            Friday at 5:00 PM EST.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <!-- Sidebar Widget (4 cols) -->
+                    <aside class="lg:col-span-4 space-y-stack-lg">
+                        <!-- To-Do / Upcoming Section -->
+                        <div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-6">
+                            <h3 class="font-h3 text-primary mb-stack-md flex items-center justify-between">
+                                To-Do List
+                                <span class="text-xs font-bold px-2 py-1 bg-error/10 text-error rounded-full"
+                                    >4 Pending</span
+                                >
+                            </h3>
+                            <div class="space-y-4">
+                                <!-- Task 1 -->
+                                <div class="group cursor-pointer">
+                                    <div class="flex items-start gap-3">
+                                        <div
+                                            class="mt-1 w-5 h-5 rounded border-2 border-outline-variant flex items-center justify-center text-white hover:border-primary-container group-hover:bg-primary-container transition-colors"
+                                        >
+                                            <span class="material-symbols-outlined text-[16px]" data-icon="check"
+                                                >check</span
+                                            >
+                                        </div>
+                                        <div class="flex-1">
+                                            <p class="font-sidebar-link text-primary font-semibold text-sm">
+                                                Quiz 3 - Design Principles
+                                            </p>
+                                            <p class="text-xs text-error font-medium mt-1">Due Tomorrow, 11:59 PM</p>
+                                            <p class="text-xs text-secondary mt-1">Intro to UX Design</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Task 2 -->
+                                <div class="group cursor-pointer">
+                                    <div class="flex items-start gap-3">
+                                        <div
+                                            class="mt-1 w-5 h-5 rounded border-2 border-outline-variant flex items-center justify-center text-white hover:border-primary-container"
+                                        >
+                                            <span class="material-symbols-outlined text-[16px]" data-icon="check"
+                                                >check</span
+                                            >
+                                        </div>
+                                        <div class="flex-1">
+                                            <p class="font-sidebar-link text-primary font-semibold text-sm">
+                                                Review Research Papers
+                                            </p>
+                                            <p class="text-xs text-secondary font-medium mt-1">Due Oct 15, 2023</p>
+                                            <p class="text-xs text-secondary mt-1">Advanced Mathematics</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Task 3 -->
+                                <div class="group cursor-pointer">
+                                    <div class="flex items-start gap-3">
+                                        <div
+                                            class="mt-1 w-5 h-5 rounded border-2 border-outline-variant flex items-center justify-center text-white hover:border-primary-container"
+                                        >
+                                            <span class="material-symbols-outlined text-[16px]" data-icon="check"
+                                                >check</span
+                                            >
+                                        </div>
+                                        <div class="flex-1">
+                                            <p class="font-sidebar-link text-primary font-semibold text-sm">
+                                                Feedback on Ad Campaign
+                                            </p>
+                                            <p class="text-xs text-secondary font-medium mt-1">Due Oct 18, 2023</p>
+                                            <p class="text-xs text-secondary mt-1">Digital Marketing 101</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button
+                                class="w-full mt-6 py-2 bg-primary-container text-white rounded font-label-sm text-sm hover:opacity-90 transition-opacity"
+                            >
+                                View Calendar
+                            </button>
+                        </div>
+                        <!-- Course Progress Tracker -->
+                        <div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-6">
+                            <h3 class="font-h3 text-primary mb-stack-md">Term Progress</h3>
+                            <div class="space-y-6">
+                                <div>
+                                    <div class="flex justify-between mb-2">
+                                        <span class="text-xs font-semibold text-primary">Fall Semester 2023</span>
+                                        <span class="text-xs font-bold text-primary">75%</span>
+                                    </div>
+                                    <div class="h-2 w-full bg-surface-container-high rounded-full overflow-hidden">
+                                        <div class="h-full bg-primary-container w-3/4"></div>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-2 gap-4 pt-2">
+                                    <div class="p-3 bg-surface-container-low rounded">
+                                        <p class="text-[10px] uppercase font-bold text-secondary mb-1">
+                                            Average Attendance
+                                        </p>
+                                        <p class="text-lg font-h1 text-primary">92%</p>
+                                    </div>
+                                    <div class="p-3 bg-surface-container-low rounded">
+                                        <p class="text-[10px] uppercase font-bold text-secondary mb-1">
+                                            Grading Status
+                                        </p>
+                                        <p class="text-lg font-h1 text-primary">On-Time</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </main>
+        <!-- Mobile Navigation Bar -->
+        <nav
+            class="md:hidden fixed bottom-0 left-0 right-0 bg-surface-container-lowest border-t border-outline-variant px-6 py-3 flex justify-between items-center z-50"
+        >
+            <a class="flex flex-col items-center gap-1 text-primary-container" href="#">
+                <span
+                    class="material-symbols-outlined"
+                    data-icon="dashboard"
+                    style="font-variation-settings: &quot;FILL&quot; 1"
+                    >dashboard</span
+                >
+                <span class="text-[10px] font-bold">Dashboard</span>
+            </a>
+            <a class="flex flex-col items-center gap-1 text-secondary" href="#">
+                <span class="material-symbols-outlined" data-icon="school">school</span>
+                <span class="text-[10px] font-medium">Courses</span>
+            </a>
+            <a class="flex flex-col items-center gap-1 text-secondary" href="#">
+                <span class="material-symbols-outlined" data-icon="assignment">assignment</span>
+                <span class="text-[10px] font-medium">Tasks</span>
+            </a>
+            <a class="flex flex-col items-center gap-1 text-secondary" href="#">
+                <span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+                <span class="text-[10px] font-medium">Calendar</span>
+            </a>
+            <a class="flex flex-col items-center gap-1 text-secondary" href="#">
+                <span class="material-symbols-outlined" data-icon="settings">settings</span>
+                <span class="text-[10px] font-medium">Settings</span>
+            </a>
+        </nav>
+        <div
+            class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm transition-opacity duration-200"
+            id="delete-course-modal"
+        >
+            <div
+                class="bg-surface-container-lowest border border-outline-variant rounded-lg shadow-xl w-full max-w-md overflow-hidden animate-in fade-in zoom-in-95"
+            >
+                <div
+                    class="flex items-center justify-between px-6 py-4 border-b border-outline-variant bg-surface-container-low"
+                >
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-error text-xl">delete_forever</span>
+                        <h3 class="text-base font-semibold text-primary font-h3">Delete Course</h3>
+                    </div>
+                    <button
+                        class="p-1 text-secondary hover:text-primary hover:bg-surface-container rounded transition-colors"
+                        id="close-modal-x"
+                    >
+                        <span class="material-symbols-outlined text-xl">close</span>
+                    </button>
+                </div>
+                <div class="p-6 space-y-4">
+                    <div class="p-3 bg-error/10 border border-error/20 rounded flex items-start gap-3">
+                        <span class="material-symbols-outlined text-error text-lg mt-0.5">warning</span>
+                        <p class="text-xs text-error font-medium leading-relaxed">
+                            Select the course you wish to permanently remove from the system. This action cannot be
+                            undone and will delete all student records and materials.
+                        </p>
+                    </div>
+                    <div>
+                        <label
+                            class="block text-xs font-semibold text-primary uppercase tracking-wider mb-2 font-inter"
+                            for="course-select"
+                            >Course Name</label
+                        >
+                        <div class="relative">
+                            <select
+                                class="w-full appearance-none bg-surface-container-lowest border border-outline-variant rounded px-3 py-2 text-sm text-primary font-inter focus:outline-none focus:border-primary pr-8"
+                                id="course-select"
+                            >
+                                <option disabled="" selected="" value="">Select a course to delete...</option>
+                                <option value="ux-101">Introduction to UX Design (UX 101)</option>
+                                <option value="math-302">Advanced Mathematics (MATH 302)</option>
+                                <option value="mkt-101">Digital Marketing 101 (MKT 101)</option></select
+                            ><span
+                                class="material-symbols-outlined absolute right-2.5 top-2.5 text-secondary pointer-events-none text-lg"
+                                >expand_more</span
+                            >
+                        </div>
+                    </div>
+                    <div class="pt-2 flex items-center justify-end gap-3">
+                        <button
+                            class="px-4 py-2 border border-outline-variant hover:bg-surface-container text-secondary hover:text-primary rounded text-sm font-medium font-inter transition-colors"
+                            id="cancel-delete-btn"
+                            type="button"
+                        >
+                            Cancel</button
+                        ><button
+                            class="px-4 py-2 bg-[#ba1a1a] hover:bg-[#93000a] text-white rounded text-sm font-medium font-inter transition-colors flex items-center gap-1.5"
+                            id="confirm-delete-btn"
+                            type="button"
+                        >
+                            <span class="material-symbols-outlined text-base">delete</span><span>Delete Course</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            const modal = document.getElementById("delete-course-modal");
+            const openBtn = document.getElementById("open-delete-course-btn");
+            const closeX = document.getElementById("close-modal-x");
+            const cancelBtn = document.getElementById("cancel-delete-btn");
+            function openModal() {
+                if (modal) modal.style.display = "flex";
+            }
+            function closeModal() {
+                if (modal) modal.style.display = "none";
+            }
+            if (openBtn) openBtn.addEventListener("click", openModal);
+            if (closeX) closeX.addEventListener("click", closeModal);
+            if (cancelBtn) cancelBtn.addEventListener("click", closeModal);
+            if (modal) {
+                modal.addEventListener("click", (e) => {
+                    if (e.target === modal) closeModal();
+                });
+            }
+        </script>
+    </body>
+</html>
