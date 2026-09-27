@@ -11,4 +11,6 @@ urlpatterns = [
     path('login/', views.loginPage, name='loginPage'),
     path('get_name/', views.getName, name='get_name'),
     path('api/create_course/', views.api_create_course, name='api_create_course'),
+    path('api/delete_course/<int:courseId>/', views.api_delete_course, name='api_delete_course'),
+    path('api/check_course_exists/', views.api_check_course_exists, name='api_check_course_exists'),
 ]   

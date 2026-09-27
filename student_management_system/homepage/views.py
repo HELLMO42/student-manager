@@ -25,7 +25,7 @@ def landing(request):
 def dashboard(request):
   template = loader.get_template('index.html')
   with connection.cursor() as cursor:
-    cursor.execute("SELECT * FROM course")
+    cursor.execute("SELECT * FROM course WHERE is_deleted = 0")
     courses = cursor.fetchall()
   context = {
     'pageHeader': 'headers/dashboardHeader.html',
@@ -133,10 +133,20 @@ def api_create_course(request):
 
       return JsonResponse({'success': True, 'message': 'Course created successfully.'})
 
-def api_get_courses(request):
-    if request.method == 'POST':
-      courseId = request.POST.get('courseId')
+def api_delete_course(request, courseId):
       with connection.cursor() as cursor:
-        cursor.execute("DELETE FROM course WHERE CID = %s", [courseId])
+        cursor.execute("UPDATE course SET is_deleted = 1 WHERE CID = %s", [courseId])
 
       return redirect('dashboard')
+
+def api_check_course_exists(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        course_id = data.get('courseId')
+
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT COUNT(*) FROM course WHERE CID = %s AND is_deleted = 0", [course_id])
+            count = cursor.fetchone()[0]
+
+        exists = count > 0
+        return JsonResponse({'exists': exists})
