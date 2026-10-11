@@ -14,6 +14,30 @@
                                 courses
           </button>
           <button
+                                    class="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium  border border-outline-variant hover:border-outline-variant hover:bg-outline-variant/10 rounded transition-colors ml-3"
+                                    id="open-restore-course-btn"
+                                >
+            <span class="material-symbols-outlined text-sm">
+              restore_from_trash
+            </span
+                                    >
+            <span>
+              Restore Course
+            </span>
+          </button>
+          <button
+                                    class="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium  border border-outline-variant hover:border-outline-variant hover:bg-outline-variant/10 rounded transition-colors ml-3"
+                                    id="open-edit-course-btn"
+                                >
+            <span class="material-symbols-outlined text-sm">
+              edit
+            </span
+                                    >
+            <span>
+              Edit Course
+            </span>
+          </button>
+          <button
                                     class="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-error border border-error/40 hover:border-error hover:bg-error/10 rounded transition-colors ml-3"
                                     id="open-delete-course-btn"
                                 >
@@ -507,6 +531,106 @@
         </form>
       </div>
     </div>
+    <div class="fixed inset-0 z-[100] flex items-center justify-center overflow-y-auto bg-black/50 backdrop-blur-sm" id="edit-course-form-modal">
+      <div class="bg-surface-container-lowest w-full max-w-2xl mx-4 rounded-lg border border-outline-variant shadow-xl overflow-hidden">
+        <div class="px-6 py-4 border-b border-outline-variant flex items-center justify-between bg-primary-container">
+          <h2 class="text-white font-h2 text-xl" id="edit-course-form-title">
+            Edit Course
+          </h2>
+          <button class="text-white/80 hover:text-white transition-colors" id="close-edit-course-form-modal">
+            <span class="material-symbols-outlined">
+              close
+            </span>
+          </button>
+        </div>
+        <form class="p-6 space-y-6" id="edit-course-form">
+          {% csrf_token %}
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="space-y-2">
+              <label class="block text-sm font-semibold text-primary">
+                Course Title
+              </label>
+              <input
+                        class="w-full px-3 py-2 rounded border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-sm"
+                        placeholder="e.g. Advanced Interaction Design"
+                        type="text"
+                        id="edit-course-title"
+                    />
+            </div>
+            <div class="space-y-2">
+              <label class="block text-sm font-semibold text-primary">
+                Department
+              </label>
+              <select
+                        class="w-full px-3 py-2 rounded border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-sm bg-white"
+                    >
+                <option>
+                  STEM
+                </option>
+                <option>
+                  UX Design
+                </option>
+                <option>
+                  Marketing
+                </option>
+                <option>
+                  Humanities
+                </option>
+              </select>
+            </div>
+            <div class="space-y-2">
+              <label class="block text-sm font-semibold text-primary">
+                Instructor Name
+              </label>
+              <input
+                        class="w-full px-3 py-2 rounded border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-sm"
+                        type="text"
+                        value="Professor Smith"
+                    />
+            </div>
+          </div>
+          <div class="space-y-2">
+            <label class="block text-sm font-semibold text-primary">
+              Course Description
+            </label>
+            <textarea
+                    class="w-full px-3 py-2 rounded border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-sm resize-none"
+                    placeholder="Provide a brief overview of the course objectives and curriculum..."
+                    rows="4" id="edit-course-description"
+                >
+            </textarea>
+          </div>
+          <div class="space-y-2">
+            <label class="block text-sm font-semibold text-primary">
+              Thumbnail URL
+            </label>
+            <input
+                        class="w-full px-3 py-2 rounded border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-sm"
+                        placeholder="e.g. https://example.com/thumbnail.jpg"
+                        type="url"
+                        id="edit-course-thumbnail"
+                    />
+          </div>
+          <div id="edit-form-error-message" class="text-xs text-error font-medium">
+            <p>Please enter a valid Course ID.</p>
+          </div>
+          <div class="flex items-center justify-end gap-3 pt-4 border-t border-outline-variant">
+            <button
+                    class="px-4 py-2 text-sm font-semibold text-secondary hover:bg-surface-container rounded transition-colors"
+                    type="button" id="cancel-edit-course-button"
+                >
+              Cancel
+            </button>
+            <button
+                    class="px-6 py-2 text-sm font-semibold bg-primary-container text-white rounded hover:opacity-90 transition-opacity"
+                    type="submit" id="submit-edit-course-button"
+                >
+              Edit Course
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
     <div
             class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm transition-opacity duration-200"
             id="delete-course-modal"
@@ -575,6 +699,136 @@
               </span>
               <span>
                 Delete Course
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+            class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm transition-opacity duration-200"
+            id="edit-course-modal"
+        >
+      <div
+                class="bg-surface-container-lowest border border-outline-variant rounded-lg shadow-xl w-full max-w-md overflow-hidden animate-in fade-in zoom-in-95"
+            >
+        <div
+                    class="flex items-center justify-between px-6 py-4 border-b border-outline-variant bg-surface-container-low"
+                >
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-xl">
+              edit
+            </span>
+            <h3 class="text-base font-semibold text-primary font-h3">
+              Edit Course
+            </h3>
+          </div>
+          <button
+                        class="p-1 text-secondary hover:text-primary hover:bg-surface-container rounded transition-colors"
+                        id="close-edit-modal-x"
+                    >
+            <span class="material-symbols-outlined text-xl">
+              close
+            </span>
+          </button>
+        </div>
+        <div class="p-6 space-y-4">
+          <div>
+            <label class="block text-xs font-semibold text-primary uppercase tracking-wider mb-2 font-inter" for="course-select">
+              Course ID
+            </label
+                        >
+            <div class="relative">
+              <input class="w-full px-3 py-2 rounded border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-sm" type="int" placeholder="Enter Course ID to edit" id="input-edit-course-id"/>
+            </div>
+          </div>
+          <div id="edit-error-message" class="text-xs text-error font-medium">
+            <p>Please enter a valid Course ID.</p>
+          </div>
+          <div class="pt-2 flex items-center justify-end gap-3">
+            <button
+                            class="px-4 py-2 border border-outline-variant hover:bg-surface-container text-secondary hover:text-primary rounded text-sm font-medium font-inter transition-colors"
+                            id="cancel-edit-btn"
+                            type="button"
+                        >
+              Cancel
+            </button
+                        >
+            <button
+                            class="px-4 py-2 bg-[#ba1a1a] hover:bg-[#93000a] text-white rounded text-sm font-medium font-inter transition-colors flex items-center gap-1.5"
+                            id="edit-button"
+                            type="button"
+                        >
+              <span class="material-symbols-outlined text-base">
+                edit
+              </span>
+              <span>
+                Edit Course
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+            class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm transition-opacity duration-200"
+            id="restore-course-modal"
+        >
+      <div
+                class="bg-surface-container-lowest border border-outline-variant rounded-lg shadow-xl w-full max-w-md overflow-hidden animate-in fade-in zoom-in-95"
+            >
+        <div
+                    class="flex items-center justify-between px-6 py-4 border-b border-outline-variant bg-surface-container-low"
+                >
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-xl">
+              restore_from_trash
+            </span>
+            <h3 class="text-base font-semibold text-primary font-h3">
+              Restore Course
+            </h3>
+          </div>
+          <button
+                        class="p-1 text-secondary hover:text-primary hover:bg-surface-container rounded transition-colors"
+                        id="close-restore-modal-x"
+                    >
+            <span class="material-symbols-outlined text-xl">
+              close
+            </span>
+          </button>
+        </div>
+        <div class="p-6 space-y-4">
+          <div>
+            <label class="block text-xs font-semibold text-primary uppercase tracking-wider mb-2 font-inter" for="course-select">
+              Course ID
+            </label
+                        >
+            <div class="relative">
+              <input class="w-full px-3 py-2 rounded border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-sm" type="int" placeholder="Enter Course ID to restore" id="input-restore-course-id"/>
+            </div>
+          </div>
+          <div id="restore-error-message" class="text-xs text-error font-medium">
+            <p>Please enter a valid Course ID.</p>
+          </div>
+          <div class="pt-2 flex items-center justify-end gap-3">
+            <button
+                            class="px-4 py-2 border border-outline-variant hover:bg-surface-container text-secondary hover:text-primary rounded text-sm font-medium font-inter transition-colors"
+                            id="cancel-restore-btn"
+                            type="button"
+                        >
+              Cancel
+            </button
+                        >
+            <button
+                            class="px-4 py-2 bg-[#ba1a1a] hover:bg-[#93000a] text-white rounded text-sm font-medium font-inter transition-colors flex items-center gap-1.5"
+                            id="restore-button"
+                            type="button"
+                        >
+              <span class="material-symbols-outlined text-base">
+                restore
+              </span>
+              <span>
+                Restore Course
               </span>
             </button>
           </div>
@@ -712,6 +966,198 @@
                             location.reload();
                         })
             
+    </script>
+    <script>
+      const editModal = document.getElementById("edit-course-modal");
+            const openEditBtn = document.getElementById("open-edit-course-btn");
+            const closeEditX = document.getElementById("close-edit-modal-x");
+            const cancelEditBtn = document.getElementById("cancel-edit-btn");
+            const editErrorMessage = document.getElementById("edit-error-message");
+            const editCourseInput = document.getElementById("input-edit-course-id");
+            const editCourseForm = document.getElementById("edit-course-form-form");
+            const editCourseFormModal = document.getElementById("edit-course-form-modal");
+            const editCourseFormTitle = document.getElementById("edit-course-form-title");
+            const editCourseTitleInput = document.getElementById("edit-course-title");
+            const editCourseDescriptionInput = document.getElementById("edit-course-description");
+            const editCourseThumbnailInput = document.getElementById("edit-course-thumbnail");
+            const editCourseFormSubmitBtn = document.getElementById("submit-edit-course-button");
+            const editCourseFormCancelBtn = document.getElementById("cancel-edit-course-button");
+            const editCourseFormCloseX = document.getElementById("close-edit-course-form-modal");
+            const editCourseFormErrorMessage = document.getElementById("edit-form-error-message");
+
+            function openEditModal() {
+                if (editModal) editModal.style.display = "flex";
+                hideEditErrorMessage(); // Hide error message when modal is opened
+            }
+            function closeEditModal() {
+                if (editModal) editModal.style.display = "none";
+                hideEditErrorMessage(); // Hide error message when modal is closed
+            }
+            function showEditErrorMessage(){
+                if (editErrorMessage) editErrorMessage.style.display = "block";
+            }
+            function hideEditErrorMessage(){
+                if (editErrorMessage) editErrorMessage.style.display = "none";
+            }
+            function showEditFormError(){
+                if (editCourseFormErrorMessage) editCourseFormErrorMessage.style.display = "block";
+            }
+            function hideEditFormError(){
+                if (editCourseFormErrorMessage) editCourseFormErrorMessage.style.display = "none";
+            }
+            function hideEditForm(){
+                editCourseFormModal.style.display = "none";
+                // editCourseForm.style.display = "none";
+            }
+            closeEditModal(); // Ensure modal is hidden on page load
+            hideEditErrorMessage(); // Ensure error message is hidden on page load
+            hideEditFormError(); // Ensure form error message is hidden on page load  
+            hideEditForm(); // Ensure edit form is hidden on page load
+            if (openEditBtn) openEditBtn.addEventListener("click", openEditModal);
+            if (closeEditX) closeEditX.addEventListener("click", closeEditModal);
+            if (cancelEditBtn) cancelEditBtn.addEventListener("click", closeEditModal);
+            if (editCourseFormCloseX) editCourseFormCloseX.addEventListener("click", hideEditForm);
+            if (editCourseFormCancelBtn) editCourseFormCancelBtn.addEventListener("click", hideEditForm);
+            if (editModal) {
+                editModal.addEventListener("click", (e) => {
+                    if (e.target === editModal) closeEditModal();
+                });
+            }
+            document.getElementById("edit-button").addEventListener("click", function(e){
+                            e.preventDefault();
+                            
+                            let courseId = document.getElementById("input-edit-course-id").value;
+
+                            fetch('/api/check_course_exists/', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                                },
+                                body: JSON.stringify({
+                                    courseId: courseId
+                                })
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                if(data.exists){
+                                    hideEditErrorMessage();
+                                    editCourseFormModal.style.display = "block";
+                            fetch('/api/get_course_info/', {
+                                              method: 'POST',
+                                              headers: {
+                                                  'Content-Type': 'application/json',
+                                                  'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                                              },
+                                              body: JSON.stringify({
+                                                  courseId: editCourseInput.value
+                                              })
+                                          })
+                                          .then(response => response.json())
+                                          .then(data => {
+                                              if(data){
+                                                  editCourseFormTitle.textContent = `Edit Course: CID ${data.courseId}`;
+                                                  editCourseTitleInput.value = data.courseName;
+                                                  editCourseDescriptionInput.value = data.courseDescription;
+                                                  editCourseThumbnailInput.value = data.courseImg;
+                                              } else {
+                                                  alert("Error fetching course info: " + data.error);
+                                              }
+                                          })
+                                } else {
+                                    showEditErrorMessage();
+                                }
+                            })
+                            editCourseFormSubmitBtn.addEventListener("click", function(e){
+                                e.preventDefault();
+                                let courseId = editCourseInput.value;
+
+                                let courseTitle = editCourseTitleInput.value;
+                                let courseDescription = editCourseDescriptionInput.value;
+                                let courseThumbnail = editCourseThumbnailInput.value;
+
+                                fetch(`/api/update_course/`, {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                        'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                                    },
+                                    body: JSON.stringify({
+                                        courseId: courseId,
+                                        courseName: courseTitle,
+                                        courseDescription: courseDescription,
+                                        courseImg: courseThumbnail
+                                    })
+                                })
+                                .then(response => response.json())
+                                .then(data => {
+                                    if(data.success){
+                                        alert(data.message);
+                                        location.reload();
+                                    } else {
+                                        editCourseFormErrorMessage.textContent = data.message;
+                                        showEditFormError();
+                                    }
+                                })
+                        })
+                      })
+                        
+  
+    </script>
+    <script>
+            const restoreModal = document.getElementById("restore-course-modal");
+            const openRestoreBtn = document.getElementById("open-restore-course-btn");
+            const closeRestoreX = document.getElementById("close-restore-modal-x");
+            const cancelRestoreBtn = document.getElementById("cancel-restore-btn");
+            const restoreErrorMessage = document.getElementById("restore-error-message");
+            const restoreCourseInput = document.getElementById("input-restore-course-id");
+            const restoreButton = document.getElementById("restore-button");
+            function openRestoreModal() {
+                if (restoreModal) restoreModal.style.display = "flex";
+                hideRestoreErrorMessage(); // Hide error message when modal is opened
+            }
+            function closeRestoreModal() {
+                if (restoreModal) restoreModal.style.display = "none";
+                hideRestoreErrorMessage(); // Hide error message when modal is closed
+            }
+            function showRestoreErrorMessage(){
+                if (restoreErrorMessage) restoreErrorMessage.style.display = "block";
+            }
+            function hideRestoreErrorMessage(){
+                if (restoreErrorMessage) restoreErrorMessage.style.display = "none";
+            }
+            closeRestoreModal(); // Ensure modal is hidden on page load
+            hideRestoreErrorMessage(); // Ensure error message is hidden on page load
+            if (openRestoreBtn) openRestoreBtn.addEventListener("click", openRestoreModal);
+            if (closeRestoreX) closeRestoreX.addEventListener("click", closeRestoreModal);
+            if (cancelRestoreBtn) cancelRestoreBtn.addEventListener("click", closeRestoreModal);
+
+            restoreButton.addEventListener("click", function(e){
+                            e.preventDefault();
+                            
+                            let courseId = restoreCourseInput.value;
+
+                            fetch('/api/restore_course/', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                                },
+                                body: JSON.stringify({
+                                    courseId: courseId
+                                })
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                if(data.success){
+                                    alert(data.message);
+                                    location.reload();
+                                } else {
+                                    restoreErrorMessage.textContent = data.message;
+                                    showRestoreErrorMessage();
+                                }
+                            })
+                        })
     </script>
     <script>
       // Simple toggle logic for demonstration

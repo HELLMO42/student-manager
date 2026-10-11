@@ -13,4 +13,7 @@ urlpatterns = [
     path('api/create_course/', views.api_create_course, name='api_create_course'),
     path('api/delete_course/<int:courseId>/', views.api_delete_course, name='api_delete_course'),
     path('api/check_course_exists/', views.api_check_course_exists, name='api_check_course_exists'),
+    path('api/get_course_info/',views.api_get_course_info,name='api_get_course_info'),
+    path('api/update_course/', views.api_update_course, name='api_update_course'),
+    path('api/restore_course/', views.api_restore_course, name='api_restore_course'),
 ]   

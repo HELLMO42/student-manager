@@ -150,3 +150,74 @@ def api_check_course_exists(request):
 
         exists = count > 0
         return JsonResponse({'exists': exists})
+
+def api_get_course_info(request):
+   if request.method=='POST':
+      data = json.loads(request.body)
+      course_id = data.get('courseId')
+
+      with connection.cursor() as cursor:
+          cursor.execute("SELECT * FROM course WHERE CID = %s AND is_deleted = 0", [course_id])
+          course_info = cursor.fetchone()
+
+      if course_info:
+          response={
+             'courseId': course_info[0],
+             'courseName': course_info[1],
+             'courseDescription': course_info[2],
+             'courseImg': course_info[3]
+          }
+          return JsonResponse(response)
+      else:
+          return JsonResponse({"error": "Course not found."}, status=404)
+
+def api_update_course(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        course_id = data.get('courseId')
+        course_name = data.get('courseName')
+        course_description = data.get('courseDescription')
+        course_thumbnail = data.get('courseImg')
+
+        if not all([course_id, course_name, course_description]):
+            return JsonResponse({'success': False, 'message': 'Missing required fields.'}, status=400)
+
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT COUNT(*) FROM course WHERE CID = %s AND is_deleted = 0", [course_id])
+            count = cursor.fetchone()[0]
+
+        if count == 0:
+            return JsonResponse({'success': False, 'message': 'Course not found.'}, status=404)
+
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT Name FROM course WHERE is_deleted = 0 AND CID != %s", [course_id])
+            names = cursor.fetchall()
+
+        for name in names:
+            if name[0] == course_name:
+                return JsonResponse({'success': False, 'message': 'Course name already exists.'}, status=400)
+
+        with connection.cursor() as cursor:
+            cursor.execute(
+                "UPDATE course SET name = %s, content = %s, thumbnail = %s WHERE CID = %s AND is_deleted = 0",
+                [course_name, course_description, course_thumbnail, course_id]
+            )
+
+        return JsonResponse({'success': True, 'message': 'Course updated successfully.'})
+
+def api_restore_course(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        course_id = data.get('courseId')
+
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT COUNT(*) FROM course WHERE CID = %s AND is_deleted = 1", [course_id])
+            count = cursor.fetchone()[0]
+
+        if count == 0:
+            return JsonResponse({'success': False, 'message': 'Course not found or not deleted.'}, status=404)
+
+        with connection.cursor() as cursor:
+            cursor.execute("UPDATE course SET is_deleted = 0 WHERE CID = %s", [course_id])
+
+        return JsonResponse({'success': True, 'message': 'Course restored successfully.'})
